@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE arm SYSTEM "doctypes/dtdArm.dtd">
+<arm version="1.0">
+    <content>
+        <support>0.0, -1.0, 0.0</support>
+        <piece id="1" type="joint" src="designs/JntBase.dae">
+            <relations>-1, 1</relations>
+            <position rel="absolute">0.0, 0.0, 0.0</position>
+            <angle class="current">0.0, 0.0, 0.0</angle>
+            <angle class="min">0.0, 0.0, 0.0</angle>
+            <angle class="max">0.0, 360.0, 0.0</angle>
+            <angle class="joint">0.0, 228.0, 0.0</angle>
+        </piece>
+        <piece id="2" type="joint" src="designs/JntNormal1.dae">
+            <relations>1, 3</relations>
+            <position rel="absolute">0.0, 20.0, 0.0</position>
+            <angle class="current">0.0, 0.0, 0.0</angle>
+            <angle class="min">0.0, 0.0, 0.0</angle>
+            <angle class="max">90.0, 0.0, 0.0</angle>
+            <angle class="joint">0.0, 0.0, 0.0</angle>
+        </piece>
+        <piece id="3" type="segment" src="designs/sgmNormal1.dae">
+            <relations>2, 4</relations>
+            <position rel="absolute">0.0, 20.0, -20.0</position>
+            <angle class="current">0.0, 0.0, 0.0</angle>
+            <angle class="min">0.0, 0.0, 0.0</angle>
+            <angle class="max">0.0, 0.0, 0.0</angle>
+            <angle class="joint">0.0, 0.0, 0.0</angle>
+        </piece>
+        <piece id="4" type="joint" src="designs/JntNormal1.dae">
+            <relations>3, 5</relations>
+            <position rel="absolute">0.0, 42.0, -38.0</position>
+            <angle class="current">0.0, 180.0, 0.0</angle>
+            <angle class="min">270.0, 0.0, 0.0</angle>
+            <angle class="max">360.0, 0.0, 0.0</angle>
+            <angle class="joint">308.0, 0.0, 0.0</angle>
+        </piece>
+        <piece id="5" type="segment" src="designs/sgmNormal2.dae">
+            <relations>4, 6</relations>
+            <position rel="absolute">0.0, -15.0, 45.0</position>
+            <angle class="current">0.0, 1.0, 0.0</angle>
+            <angle class="min">0.0, 0.0, 0.0</angle>
+            <angle class="max">0.0, 0.0, 0.0</angle>
+            <angle class="joint">0.0, 0.0, 0.0</angle>
+        </piece>
+        <piece id="6" type="joint" src="designs/JntArm1.dae">
+            <relations>5, 7</relations>
+            <position rel="absolute">-5.0, -30.0, 105.0</position>
+            <angle class="current">0.0, 0.0, 0.0</angle>
+            <angle class="min">-45.0, 0.0, 0.0</angle>
+            <angle class="max">45.0, 0.0, 0.0</angle>
+            <angle class="joint">9.0, 0.0, 0.0</angle>
+        </piece>
+        <piece id="7" type="palm" src="designs/PalmNormal1.dae">
+            <relations>6, 8, 9</relations>
+            <position rel="absolute">-1.5, -5.0, 10.0</position>
+            <angle class="current">0.0, 0.0, 0.0</angle>
+            <angle class="min">0.0, 0.0, 0.0</angle>
+            <angle class="max">0.0, 0.0, 0.0</angle>
+            <angle class="joint">0.0, 0.0, 0.0</angle>
+        </piece>
+        <piece id="8" type="joint" src="designs/FngJntNmlRight.dae">
+            <relations>7, 101</relations>
+            <position rel="absolute">9.0, -5.0, 35.0</position>
+            <angle class="current">0.0, 0.0, 0.0</angle>
+            <angle class="min">0.0, 300.0, 0.0</angle>
+            <angle class="max">0.0, 360.0, 0.0</angle>
+            <angle class="joint">0.0, 320.0, 0.0</angle>
+        </piece>
+        <piece id="9" type="joint" src="designs/FngJntNmlLeft.dae">
+            <relations>7, 10</relations>
+            <position rel="absolute">-9.0, -5.0, 33.0</position>
+            <angle class="current">0.0, 0.0, 0.0</angle>
+            <angle class="min">0.0, 0.0, 0.0</angle>
+            <angle class="max">0.0, 70.0, 0.0</angle>
+            <angle class="joint">0.0, 31.0, 0.0</angle>
+        </piece>
+        <piece id="10" type="finger" src="designs/FingerNrm1.dae">
+            <relations>9</relations>
+            <position rel="absolute">-20.0, 0.0, 20.0</position>
+            <friction>2, 5, 4</friction>
+            <angle class="current">0.0, 0.0, 0.0</angle>
+            <angle class="min">0.0, 0.0, 0.0</angle>
+            <angle class="max">0.0, 0.0, 0.0</angle>
+            <angle class="joint">0.0, 0.0, 0.0</angle>
+        </piece>
+        <piece id="11" type="finger" src="designs/FingerNrm1.dae">
+            <relations>8</relations>
+            <position rel="absolute">20.0, 0.0, 20.0</position>
+            <friction>0, 0, 0</friction>
+            <friction>0, 1, 0</friction>
+            <friction>1, 0, 0</friction>
+            <friction>0, 0, 1</friction>
+            <angle class="current">0.0, -25.0, 0.0</angle>
+            <angle class="min">0.0, 0.0, 0.0</angle>
+            <angle class="max">0.0, 0.0, 0.0</angle>
+            <angle class="joint">0.0, 0.0, 0.0</angle>
+        </piece>
+    </content>
+</arm>

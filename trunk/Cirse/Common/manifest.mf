@@ -1,0 +1,6 @@
+Manifest-Version: 1.0
+OpenIDE-Module: org.itver.common
+OpenIDE-Module-Layer: org/itver/common/layer.xml
+OpenIDE-Module-Localizing-Bundle: org/itver/common/Bundle.properties
+OpenIDE-Module-Specification-Version: 1.0
+
