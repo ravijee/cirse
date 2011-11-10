@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!ELEMENT palette (category+)>
-<!ELEMENT category (item+)>
-<!ATTLIST category title CDATA #REQUIRED>
-<!ELEMENT item (#PCDATA)>
-<!ATTLIST item title CDATA #REQUIRED
-               file  CDATA #REQUIRED
-               img   CDATA #IMPLIED>
-
