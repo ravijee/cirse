@@ -218,6 +218,7 @@ public class EnvironmentLimits extends BranchGroup {
      */
     //************Cambiar esto para que tome valores del archivo y que además
     //acepte texturas.
+    @Deprecated
     private void createDefaultAppearance() {
         Appearance ap = new Appearance();
         TextureAttributes ta = new TextureAttributes();
@@ -250,7 +251,34 @@ public class EnvironmentLimits extends BranchGroup {
             limits[i].setAppearance(appearance);
         }
     }
-
+    
+    //CUIDADO con este método
+    //Regresa el material asociado a la apriencia de los límites
+    private Material getAppearanceMaterial(){
+        Appearance reference = limits[0].getAppearance();
+        Material material = reference.getMaterial();
+        return material;
+    }
+    //CUIDADO con este método
+    //Regresa los colores del material de la apariencia aplicada a todos los límites
+    //Los regresa ordenados como : ambient, emissive, diffuse y specular
+    public Color3f[] getMaterialColors(){
+        Color3f[] colors = new Color3f[4];
+        for (int i = 0; i < colors.length; i++) {
+            colors[i] = new Color3f();
+        }
+        getAppearanceMaterial().getAmbientColor(colors[0]);
+        getAppearanceMaterial().getEmissiveColor(colors[1]);
+        getAppearanceMaterial().getDiffuseColor(colors[2]);
+        getAppearanceMaterial().getSpecularColor(colors[3]);
+        return colors;
+    }
+    //CUIDADO con este método
+    //Regresa el brillo del material aplicado a todos los límites
+    public float getMaterialShininess(){
+        float shininess = getAppearanceMaterial().getShininess();
+        return shininess;
+    }
     /**
      * Establece una apariencia dada a un bloque limitador específico.
      * @param limit Límite sobre el que se quiere aplicar la apariencia.
@@ -585,7 +613,10 @@ public class EnvironmentLimits extends BranchGroup {
         return environmentBounds;
     }
     
-    public void resetLimitValues(){
+    public float[] getEnvironmentValues(){
+        float[] values = new float[]{getWidth(), getHeight(), getDeepness(), getThickness()};
+        return values;
+        
         
     }
 }
