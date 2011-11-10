@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE filesystem PUBLIC "-//NetBeans//DTD Filesystem 1.2//EN" "http://www.netbeans.org/dtds/filesystem-1_2.dtd">
+<filesystem>
+    <folder name="Actions">
+        <folder name="Manipulator">
+            <file name="org-itver-arm-controls-controllers-actions-ExportArmAction.instance">
+                <attr name="delegate" methodvalue="org.openide.awt.Actions.inject"/>
+                <attr name="displayName" bundlevalue="org.itver.arm.controls.controllers.actions.Bundle#CTL_ExportArmAction"/>
+                <attr name="instanceCreate" methodvalue="org.openide.awt.Actions.context"/>
+                <attr name="injectable" stringvalue="org.itver.arm.controls.controllers.actions.ExportArmAction"/>
+                <attr name="selectionType" stringvalue="EXACTLY_ONE"/>
+                <attr name="noIconInMenu" boolvalue="false"/>
+                <attr name="type" stringvalue="org.itver.arm.models.elements.Arm"/>
+            </file>
+            <file name="org-itver-arm-controls-controllers-actions-InsertJointAction.instance">
+                <attr name="delegate" methodvalue="org.openide.awt.Actions.inject"/>
+                <attr name="displayName" bundlevalue="org.itver.arm.controls.controllers.actions.Bundle#CTL_InsertJointAction"/>
+                <attr name="injectable" stringvalue="org.itver.arm.controls.controllers.actions.InsertJointAction"/>
+                <attr name="instanceCreate" methodvalue="org.openide.awt.Actions.context"/>
+                <attr name="noIconInMenu" boolvalue="false"/>
+                <attr name="selectionType" stringvalue="EXACTLY_ONE"/>
+                <attr name="type" stringvalue="org.itver.arm.models.elements.Element"/>
+            </file>
+            <file name="org-itver-arm-controls-controllers-actions-InsertPiece.instance">
+                <attr name="delegate" methodvalue="org.openide.awt.Actions.inject"/>
+                <attr name="displayName" bundlevalue="org.itver.arm.controls.controllers.actions.Bundle#CTL_InertPiece"/>
+                <attr name="instanceCreate" methodvalue="org.openide.awt.Actions.context"/>
+                <attr name="injectable" stringvalue="org.itver.arm.controls.controllers.actions.InsertPiece"/>
+                <attr name="selectionType" stringvalue="EXACTLY_ONE"/>
+                <attr name="noIconInMenu" boolvalue="false"/>
+                <attr name="type" stringvalue="org.itver.arm.models.elements.Element"/>
+            </file>
+            <file name="org-itver-arm-controls-controllers-actions-InsertArm.instance">
+                <attr name="delegate" newvalue="org.itver.arm.controls.controllers.actions.InsertArm"/>
+                <attr name="displayName" bundlevalue="org.itver.arm.controls.controllers.actions.Bundle#CTL_InsertArm"/>
+                <attr name="instanceCreate" methodvalue="org.openide.awt.Actions.alwaysEnabled"/>
+                <attr name="noIconInMenu" boolvalue="false"/>
+            </file>
+            <file name="org-itver-arm-controls-controllers-actions-NewArm.instance">
+                <attr name="delegate" newvalue="org.itver.arm.controls.controllers.actions.NewArm"/>
+                <attr name="displayName" bundlevalue="org.itver.arm.controls.controllers.actions.Bundle#CTL_NewArm"/>
+                <attr name="instanceCreate" methodvalue="org.openide.awt.Actions.alwaysEnabled"/>
+                <attr name="noIconInMenu" boolvalue="false"/>
+            </file>
+            <file name="org-itver-arm-controls-controllers-actions-NewLogStepAction.instance">
+                <attr name="delegate" methodvalue="org.openide.awt.Actions.inject"/>
+                <attr name="displayName" bundlevalue="org.itver.arm.controls.controllers.actions.Bundle#CTL_NewLogStepAction"/>
+                <attr name="injectable" stringvalue="org.itver.arm.controls.controllers.actions.NewLogStepAction"/>
+                <attr name="instanceCreate" methodvalue="org.openide.awt.Actions.context"/>
+                <attr name="noIconInMenu" boolvalue="false"/>
+                <attr name="selectionType" stringvalue="EXACTLY_ONE"/>
+                <attr name="type" stringvalue="org.itver.arm.models.elements.Joint"/>
+            </file>
+            <file name="org-itver-arm-controls-controllers-actions-SnapshotAction.instance">
+                <attr name="delegate" methodvalue="org.openide.awt.Actions.inject"/>
+                <attr name="displayName" bundlevalue="org.itver.arm.controls.controllers.actions.Bundle#CTL_SnapshotAction"/>
+                <attr name="injectable" stringvalue="org.itver.arm.controls.controllers.actions.SnapshotAction"/>
+                <attr name="instanceCreate" methodvalue="org.openide.awt.Actions.context"/>
+                <attr name="noIconInMenu" boolvalue="false"/>
+                <attr name="selectionType" stringvalue="EXACTLY_ONE"/>
+                <attr name="type" stringvalue="org.itver.arm.models.elements.Element"/>
+            </file>
+            <file name="org-itver-arm-controls-controllers-actions-WalkLogAction.instance">
+                <attr name="delegate" newvalue="org.itver.arm.controls.controllers.actions.WalkLogAction"/>
+                <attr name="displayName" bundlevalue="org.itver.arm.controls.controllers.actions.Bundle#CTL_WalkLogAction"/>
+                <attr name="instanceCreate" methodvalue="org.openide.awt.Actions.alwaysEnabled"/>
+                <attr name="noIconInMenu" boolvalue="false"/>
+            </file>
+        </folder>
+        <folder name="Window">
+            <file name="org-itver-arm-views-gui-ArmControlAction.instance">
+                <attr name="component" methodvalue="org.itver.arm.views.gui.RotatorViewTopComponent.findInstance"/>
+                <attr name="displayName" bundlevalue="org.itver.arm.views.gui.Bundle#CTL_ArmControlAction"/>
+                <attr name="instanceCreate" methodvalue="org.openide.windows.TopComponent.openAction"/>
+            </file>
+            <file name="org-itver-arm-views-gui-LogNavigatorAction.instance">
+                <attr name="component" methodvalue="org.itver.arm.views.gui.LogNavigatorTopComponent.findInstance"/>
+                <attr name="displayName" bundlevalue="org.itver.arm.views.gui.Bundle#CTL_LogNavigatorAction"/>
+                <attr name="instanceCreate" methodvalue="org.openide.windows.TopComponent.openAction"/>
+            </file>
+        </folder>
+    </folder>
+    <folder name="Menu">
+        <folder name="Manipulator">
+            <file name="org-itver-arm-controls-controllers-actions-ExportArmAction-separatorAfter.instance">
+                <attr name="instanceClass" stringvalue="javax.swing.JSeparator"/>
+                <attr name="position" intvalue="37"/>
+            </file>
+            <file name="org-itver-arm-controls-controllers-actions-ExportArmAction.shadow">
+                <attr name="originalFile" stringvalue="Actions/Manipulator/org-itver-arm-controls-controllers-actions-ExportArmAction.instance"/>
+                <attr name="position" intvalue="25"/>
+            </file>
+            <file name="org-itver-arm-controls-controllers-actions-InertPiece.shadow">
+                <attr name="originalFile" stringvalue="Actions/Manipulator/org-itver-arm-controls-controllers-actions-InsertPiece.instance"/>
+                <attr name="position" intvalue="50"/>
+            </file>
+            <file name="org-itver-arm-controls-controllers-actions-InsertArm.shadow">
+                <attr name="originalFile" stringvalue="Actions/Manipulator/org-itver-arm-controls-controllers-actions-InsertArm.instance"/>
+                <attr name="position" intvalue="0"/>
+            </file>
+            <file name="org-itver-arm-controls-controllers-actions-InsertJointAction-separatorAfter.instance">
+                <attr name="instanceClass" stringvalue="javax.swing.JSeparator"/>
+                <attr name="position" intvalue="250"/>
+            </file>
+            <file name="org-itver-arm-controls-controllers-actions-InsertJointAction.shadow">
+                <attr name="originalFile" stringvalue="Actions/Manipulator/org-itver-arm-controls-controllers-actions-InsertJointAction.instance"/>
+                <attr name="position" intvalue="150"/>
+            </file>
+            <file name="org-itver-arm-controls-controllers-actions-NewArm.shadow">
+                <attr name="originalFile" stringvalue="Actions/Manipulator/org-itver-arm-controls-controllers-actions-NewArm.instance"/>
+                <attr name="position" intvalue="-100"/>
+            </file>
+            <file name="org-itver-arm-controls-controllers-actions-NewLogStepAction.shadow">
+                <attr name="originalFile" stringvalue="Actions/Manipulator/org-itver-arm-controls-controllers-actions-NewLogStepAction.instance"/>
+                <attr name="position" intvalue="300"/>
+            </file>
+            <file name="org-itver-arm-controls-controllers-actions-SnapshotAction.shadow">
+                <attr name="originalFile" stringvalue="Actions/Manipulator/org-itver-arm-controls-controllers-actions-SnapshotAction.instance"/>
+                <attr name="position" intvalue="325"/>
+            </file>
+            <file name="org-itver-arm-controls-controllers-actions-WalkLogAction.shadow">
+                <attr name="originalFile" stringvalue="Actions/Manipulator/org-itver-arm-controls-controllers-actions-WalkLogAction.instance"/>
+                <attr name="position" intvalue="350"/>
+            </file>
+        </folder>
+        <folder name="Window">
+            <file name="ArmControlAction.shadow">
+                <attr name="originalFile" stringvalue="Actions/Window/org-itver-arm-views-gui-ArmControlAction.instance"/>
+            </file>
+            <file name="LogNavigatorAction.shadow">
+                <attr name="originalFile" stringvalue="Actions/Window/org-itver-arm-views-gui-LogNavigatorAction.instance"/>
+            </file>
+        </folder>
+    </folder>
+    <folder name="Windows2">
+        <folder name="Components">
+            <file name="ArmControlTopComponent.settings" url="ArmControlTopComponentSettings.xml"/>
+            <file name="LogNavigatorTopComponent.settings" url="LogNavigatorTopComponentSettings.xml"/>
+        </folder>
+        <folder name="Modes">
+            <folder name="explorer">
+                <file name="ArmControlTopComponent.wstcref" url="ArmControlTopComponentWstcref.xml"/>
+            </folder>
+            <folder name="properties">
+                <file name="LogNavigatorTopComponent.wstcref" url="LogNavigatorTopComponentWstcref.xml"/>
+            </folder>
+        </folder>
+    </folder>
+</filesystem>
