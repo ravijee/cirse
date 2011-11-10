@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE filesystem PUBLIC "-//NetBeans//DTD Filesystem 1.2//EN" "http://www.netbeans.org/dtds/filesystem-1_2.dtd">
+<filesystem>
+    <folder name="Actions"> 
+        <folder name="Scene">
+            <file name="org-itver-gui-actions-InsertDirectionalLight.instance_hidden"/>
+            <file name="org-itver-gui-actions-InsertDirectionalLightAction.instance">
+                <attr name="instanceCreate" methodvalue="org.openide.awt.Actions.alwaysEnabled"/>
+                <attr name="noIconInMenu" boolvalue="false"/>
+            </file>
+        </folder>
+        <folder name="Window">
+            <file name="org-itver-gui-visual-ControlWindowAction.instance">
+                <attr name="component" methodvalue="org.itver.gui.visual.ControlWindowTopComponent.findInstance"/>
+                <attr name="displayName" bundlevalue="org.itver.gui.visual.Bundle#CTL_ControlWindowAction"/>
+                <attr name="instanceCreate" methodvalue="org.openide.windows.TopComponent.openAction"/>
+            </file>
+            <file name="org-itver-gui-visual-MainFrameAction.instance">
+                <attr name="component" methodvalue="org.itver.gui.visual.MainFrameTopComponent.findInstance"/>
+                <attr name="displayName" bundlevalue="org.itver.gui.visual.Bundle#CTL_MainFrameAction"/>
+                <attr name="instanceCreate" methodvalue="org.openide.windows.TopComponent.openAction"/>
+            </file>
+                <file name="org-itver-gui-visual-NavigatorAction.instance">
+                <attr name="component" methodvalue="org.itver.gui.visual.NavigatorTopComponent.findInstance"/>
+                <attr name="displayName" bundlevalue="org.itver.gui.visual.Bundle#CTL_NavigatorAction"/>
+                <attr name="instanceCreate" methodvalue="org.openide.windows.TopComponent.openAction"/>
+            </file>
+            <!--<file name="org-itver-gui-visual-PropertiesWindowAction.instance">
+                <attr name="component" methodvalue="org.itver.gui.visual.PropertiesWindowTopComponent.findInstance"/>
+                <attr name="displayName" bundlevalue="org.itver.gui.visual.Bundle#CTL_PropertiesWindowAction"/>
+                <attr name="instanceCreate" methodvalue="org.openide.windows.TopComponent.openAction"/>
+            </file>-->
+        </folder>
+    </folder>
+    <folder name="Menu">
+        <folder name="File">
+            <file name="org-itver-gui-actions-NewAction.shadow">
+                <attr name="originalFile" stringvalue="Actions/File/org-itver-gui-actions-NewAction.instance"/>
+                <attr name="position" intvalue="1300"/>
+            </file>
+<!--            <file name="org-itver-gui-actions-insert-InsertAction.shadow">
+                <attr name="originalFile" stringvalue="Actions/File/org-itver-gui-actions-insert-InsertAction.instance"/>
+                <attr name="position" intvalue="1950"/>
+            </file>-->
+            <file name="org-itver-gui-actions-openactions-OpenAction-separatorBefore.instance">
+                <attr name="instanceClass" stringvalue="javax.swing.JSeparator"/>
+                <attr name="position" intvalue="1425"/>
+            </file>
+        </folder>
+        <folder name="Window">
+            <file name="ControlWindowAction.shadow">
+                <attr name="originalFile" stringvalue="Actions/Window/org-itver-gui-visual-ControlWindowAction.instance"/>
+            </file>
+            <file name="MainFrameAction.shadow">
+                <attr name="originalFile" stringvalue="Actions/Window/org-itver-gui-visual-MainFrameAction.instance"/>
+            </file>
+            <file name="NavigatorAction.shadow">
+                <attr name="originalFile" stringvalue="Actions/Window/org-itver-gui-visual-NavigatorAction.instance"/>
+            </file>
+            <file name="PropertiesWindowAction.shadow">
+                <attr name="originalFile" stringvalue="Actions/Window/org-itver-gui-visual-PropertiesWindowAction.instance"/>
+            </file>
+        </folder>
+        <folder name="Scene">
+            <folder name="Insert">
+                <folder name="Light">
+                    <attr name="position" intvalue="4444"/>
+                </folder>    
+            </folder>
+        </folder>    
+    </folder>
+    <folder name="Toolbars">
+        <folder name="File">
+            <file name="org-itver-gui-actions-NewAction.shadow">
+                <attr name="originalFile" stringvalue="Actions/File/org-itver-gui-actions-NewAction.instance"/>
+                <attr name="position" intvalue="300"/>
+            </file>
+        </folder>
+    </folder>
+    <folder name="Windows2">
+        <folder name="Components">
+            <file name="ControlWindowTopComponent.settings" url="ControlWindowTopComponentSettings.xml"/>
+            <file name="MainFrameTopComponent.settings" url="MainFrameTopComponentSettings.xml"/>
+            <file name="NavigatorTopComponent.settings" url="NavigatorTopComponentSettings.xml"/>
+            <!--<file name="PropertiesWindowTopComponent.settings" url="PropertiesWindowTopComponentSettings.xml"/>-->
+        </folder>
+        <folder name="Modes">
+            <folder name="editor">
+                <file name="MainFrameTopComponent.wstcref" url="MainFrameTopComponentWstcref.xml"/>
+            </folder>
+            <folder name="explorer">
+                <file name="NavigatorTopComponent.wstcref" url="NavigatorTopComponentWstcref.xml"/>
+            </folder>
+            <!--<folder name="properties">
+                <file name="PropertiesWindowTopComponent.wstcref" url="PropertiesWindowTopComponentWstcref.xml"/>
+            </folder>-->
+            <folder name="properties">
+                <file name="ControlWindowTopComponent.wstcref" url="ControlWindowTopComponentWstcref.xml"/>
+            </folder>
+        </folder>
+    </folder>
+</filesystem>
