@@ -1,0 +1,60 @@
+<palette>
+	<category title="Arm">
+		<item title="Arm1" file="Arm1.arm" img="texture3.jpg">
+			Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.
+		</item>
+		<item title="Arm2" file="Arm2.arm" img="texture3.jpg">
+			Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.
+		</item>
+		<item title="Arm3" file="Arm3.arm" img="texture3.jpg">
+			Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.
+		</item>
+		<item title="Arm1" file="Arm1.arm" img="texture3.jpg">
+			Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.
+		</item>
+		<item title="Arm1" file="Arm1.arm" img="texture3.jpg">
+			Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.
+		</item>
+		<item title="Arm1" file="Arm1.arm" img="texture3.jpg">
+			Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.
+		</item>
+		<item title="Arm1" file="Arm1.arm" img="texture3.jpg">
+			Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.
+		</item>
+		<item title="Arm1" file="Arm1.arm" img="texture3.jpg">
+			Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.
+		</item>
+		<item title="Arm1" file="Arm1.arm" img="texture3.jpg">
+			Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.
+		</item>
+		<item title="Arm1" file="Arm1.arm" img="texture3.jpg">
+			Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.
+		</item>
+		<item title="Arm1" file="Arm1.arm" img="texture3.jpg">
+			Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.
+		</item>
+		<item title="Arm1" file="Arm1.arm" img="texture3.jpg">
+			Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.
+		</item>
+		<item title="Arm1" file="Arm1.arm" img="texture3.jpg">
+			Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.
+		</item>
+		<item title="Arm1" file="Arm1.arm" img="texture3.jpg">
+			Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.
+		</item>
+		<item title="Arm1" file="Arm1.arm" img="texture3.jpg">
+			Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.
+		</item>
+	</category>
+	<category title="Joint">
+		<item title="Arm1" file="designs/JntNormal1.dae" img="texture3.jpg">
+			Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.
+		</item>
+		<item title="Arm2" file="designs/JntNormal1.dae" img="texture3.jpg">
+			Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.
+		</item>
+		<item title="Arm3" file="designs/JntNormal1.dae" img="texture3.jpg">
+			Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.
+		</item>
+	</category>
+</palette>

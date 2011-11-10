@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE arm PUBLIC "-//Entorno3D//doctypes/dtdArm.dtd//EN" "http://monkeyarm.googlecode.com/files/dtdArm.dtd">
+<arm version="1.0">
+<content>
+<support>0.0, -1.0, 0.0</support>
+<position>0.0, 0.0, 0.0</position>
+<joint src="designs/JntBase.dae" axis="x" motion="rotational">
+<position>0.0, 0.0, 0.0</position>
+<orientation>0.0, 0.0, 0.0</orientation>
+<jorientation class="current">0.0</jorientation>
+<jorientation class="min">0.0</jorientation>
+<jorientation class="max">360.0</jorientation>
+<joint src="designs/JntNormal1.dae" axis="x" motion="rotational">
+<position>0.0, 0.45000000000000023, 0.0</position>
+<orientation>0.0, 0.0, 0.0</orientation>
+<jorientation class="current">0.0</jorientation>
+<jorientation class="min">0.0</jorientation>
+<jorientation class="max">360.0</jorientation>
+<piece src="designs/sgmNormal1.dae" type="segment">
+<position>0.05, 0.53, -0.3999999999999998</position>
+<orientation>0.0, 0.0, 0.0</orientation>
+</piece>
+<joint src="designs/JntNormal1.dae" axis="x" motion="rotational">
+<position>0.0, 0.8599999999999999, -1.0799999999999998</position>
+<orientation>0.0, 0.0, 0.0</orientation>
+<jorientation class="current">303.0</jorientation>
+<jorientation class="min">0.0</jorientation>
+<jorientation class="max">360.0</jorientation>
+<piece src="designs/sgmNormal1.dae" type="segment">
+<position>0.18000000000000002, 0.53, -0.3300000000000001</position>
+<orientation>0.0, 0.0, 0.0</orientation>
+</piece>
+</joint>
+</joint>
+</joint>
+</content>
+</arm>

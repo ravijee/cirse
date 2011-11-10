@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Document   : Env2.xml
+    Created on : 8 de noviembre de 2011, 11:25 AM
+    Author     : Karo
+    Description:
+        Purpose of the document follows.
+-->
+
+<!DOCTYPE universe SYSTEM "doctypes/dtdUniverse.dtd">
+<universe version="1.0">
+    <content>
+        <background src="texture3.jpg">1, 1, 1</background>
+        <limits>
+            <width>8</width>
+            <height>5</height>
+            <deepness>6</deepness>
+            <thickness>0.01</thickness>   
+            <appearance>
+               <material>
+                    <ambient>1,0,1</ambient>
+                    <emissive>0, 0, 0</emissive>
+                    <diffuse>0.37, 0.37, 0.37</diffuse>
+                    <specular>0.89, 0.89, 0.89</specular>
+                    <shininess>1</shininess>
+                 </material>
+            </appearance>
+        </limits>
+        <light type="ambient">
+            <color>1, 0, 0</color>
+        </light>
+        <light type="directional">
+            <color>1, 0, 1</color>
+            <position>0, 0, 0</position>
+        </light>
+        <light type="point">
+            <color>0, 1, 1</color>
+            <position>0, 0, 0</position>
+            <attenuation>1, 0, 0</attenuation>
+        </light>
+        <object src="designs/Flecha.dae" type='furniture'>
+            <scale>1</scale>
+            <location>1, 1, 1</location>
+            <rotation>12, 12, 12</rotation>
+        </object>
+    </content>
+</universe>
