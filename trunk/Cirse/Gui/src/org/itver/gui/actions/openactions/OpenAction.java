@@ -9,24 +9,17 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Properties;
-import javax.swing.JFileChooser;
 import org.itver.common.util.Constants;
-import org.itver.common.util.IdGenerator;
 import org.itver.graphics.model.MainScene;
-import org.itver.graphics.model.MainSceneComponent;
 import org.itver.graphics.model.Universe;
-import org.itver.graphics.util.ComponentType;
 //import org.itver.gui.visual.PropertyEditorTopComponent;
 import org.itver.gui.util.Dialogs;
-import org.itver.gui.visual.MainFrameTopComponent;
 import org.openide.awt.ActionID;
 import org.openide.awt.ActionReference;
 import org.openide.awt.ActionReferences;
 import org.openide.awt.ActionRegistration;
-import org.openide.util.Exceptions;
 
 @ActionID(id = "org.itver.gui.actions.openactions.OpenAction", category = "File")
 @ActionRegistration(iconInMenu = true, displayName = "#CTL_OpenAction", iconBase = "org/itver/gui/actions/openactions/nav_properties.png")
