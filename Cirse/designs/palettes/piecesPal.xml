@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : piecesPal.xml
+    Created on : 5 de abril de 2011, 13:38
+    Author     : pablo
+    Description:
+        Purpose of the document follows.
+-->
+
+<!DOCTYPE palette SYSTEM "doctypes/dtdPalette.dtd">
+<palette>
+    <category>
+
+    </category>
+</palette>

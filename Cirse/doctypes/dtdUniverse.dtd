@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+
+<!--
+    TODO define vocabulary identification data
+    PUBLIC ID  : -//vendor//vocabulary//EN
+    SYSTEM ID  : http://server/path/__NAME__
+-->
+
+<!-- TODO define your own vocabulary/syntax. Example follows:  -->
+<!ELEMENT universe (head?,content)>
+<!ATTLIST universe version CDATA #REQUIRED>
+    <!ELEMENT head (name,creator?)>
+        <!ELEMENT name (#PCDATA)>
+        <!ELEMENT creator (#PCDATA)>
+    <!ELEMENT content (background,limits,light+,object*)>
+        <!ELEMENT background (#PCDATA)>
+        <!ATTLIST background src CDATA #IMPLIED>
+        <!ELEMENT limits (width, height, deepness, thickness, appearance)> <!-- "alto, ancho, profundidad" -->
+            <!ELEMENT width (#PCDATA)>
+            <!ELEMENT height (#PCDATA)>
+            <!ELEMENT deepness (#PCDATA)>
+            <!ELEMENT thickness (#PCDATA)>
+            <!ELEMENT appearance (material, texture?)>
+                <!ELEMENT material (ambient, emissive, diffuse, specular, shininess)>
+                    <!ELEMENT ambient  (#PCDATA)>
+                    <!ELEMENT emissive (#PCDATA)>
+                    <!ELEMENT diffuse  (#PCDATA)>
+                    <!ELEMENT specular (#PCDATA)>
+                    <!ELEMENT shininess (#PCDATA)>
+                <!ELEMENT texture EMPTY>
+                <!ATTLIST texture src CDATA #REQUIRED
+                                  enabled (true|false) "true">
+        <!ELEMENT light (color,position?,attenuation?,direction?)>
+        <!ATTLIST light type (ambient|point|directional) "ambient">
+            <!ELEMENT color (#PCDATA)> <!-- r, g, b -->
+            <!ELEMENT position (#PCDATA)> <!-- x, y, z -->
+            <!ELEMENT direction (#PCDATA)>
+            <!ELEMENT attenuation (#PCDATA)> <!-- constant, linear, quadratic -->
+        <!ELEMENT object (scale, location, rotation)>
+        <!ATTLIST object type (arm|pickable|furniture) "furniture"
+                         src CDATA #REQUIRED>
+            <!ELEMENT scale (#PCDATA)>
+            <!ELEMENT location (#PCDATA)>
+            <!ELEMENT rotation (#PCDATA)>
