@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : pal1.xml
+    Created on : 14 de julio de 2011, 12:26
+    Author     : pablo
+    Description:
+        Purpose of the document follows.
+-->
+
+<!DOCTYPE editor_palette_item PUBLIC '-//NetBeans//Editor Palette Item 1.0//EN' 'null'>
+<editor_palette_item>
+    <class name="prueba"/>
+    <icon16 urlvalue="" />
+    <icon32 urlvalue="" />
+    <description localizing-bundle=""
+                 display-name-key=""
+                 tooltip-key=""
+                 />
+</editor_palette_item>
