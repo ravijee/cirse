@@ -1,6 +1,5 @@
 
 package org.itver.graphics.controller;
-
 import java.util.Enumeration;
 import javax.media.j3d.Behavior;
 import javax.media.j3d.BoundingSphere;
