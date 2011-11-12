@@ -4,17 +4,16 @@
  */
 package org.itver.gui.actions.saveactions;
 
+import java.awt.FileDialog;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JFileChooser;
-import org.itver.graphics.io.EnvironmentSaver;
+import java.io.File;
 import org.itver.graphics.model.Universe;
-import org.itver.gui.visual.MainFrameTopComponent;
+import org.itver.gui.util.Dialogs;
 import org.openide.awt.ActionID;
 import org.openide.awt.ActionReference;
 import org.openide.awt.ActionReferences;
 import org.openide.awt.ActionRegistration;
-import org.xml.sax.SAXException;
 
 @ActionID(id = "org.itver.gui.actions.saveactions.SaveAction", category = "File")
 @ActionRegistration(iconInMenu = true, displayName = "#CTL_SaveAction", iconBase = "org/itver/gui/actions/saveactions/Save.png")
@@ -25,12 +24,15 @@ public final class SaveAction implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        JFileChooser fChooser = new JFileChooser();
-        String file = "o";
-        if(fChooser.showSaveDialog(MainFrameTopComponent.findInstance()) == JFileChooser.APPROVE_OPTION)
-            file = fChooser.getSelectedFile().getAbsolutePath();
-        if(file.equals("o"))
-            return;
+            File file = Dialogs.fileDialog(FileDialog.SAVE, "xml");            
+            Universe.getInstance().saveFile(file);
+    }
+//        JFileChooser fChooser = new JFileChooser();
+//        String file = "o";
+//        if(fChooser.showSaveDialog(MainFrameTopComponent.findInstance()) == JFileChooser.APPROVE_OPTION)
+//            file = fChooser.getSelectedFile().getAbsolutePath();
+//        if(file.equals("o"))
+//            return;
 //        EnvironmentSaver saver = new EnvironmentSaver();
 //        Universe universe = Universe.getInstance();
 //        try {
@@ -38,5 +40,5 @@ public final class SaveAction implements ActionListener {
 //        } catch (SAXException ex) {
 //            System.err.println(ex.getMessage());
 //        }
-    }
+    
 }
