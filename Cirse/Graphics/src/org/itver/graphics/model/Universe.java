@@ -24,8 +24,10 @@ import org.itver.common.xml.XmlLoader;
 import org.itver.graphics.controller.PickComponentBehavior;
 import org.itver.graphics.io.EnvironmentInterpreter;
 import org.itver.graphics.io.EnvironmentParser;
+import org.itver.graphics.io.EnvironmentSaver;
 import org.itver.graphics.util.LightType;
 import org.openide.util.Exceptions;
+import org.xml.sax.SAXException;
 
 /**
  * Esta clase reúne los objetos necesarios, junto con el
@@ -80,6 +82,15 @@ public class Universe{
         } catch (IncorrectFormatException ex) {
             Exceptions.printStackTrace(ex);
         } catch (ParsingErrorException ex) {
+            Exceptions.printStackTrace(ex);
+        }
+    }
+    
+    public void saveFile(File file){
+        try {
+            EnvironmentSaver saver = new EnvironmentSaver(1.0f);
+            saver.save(Universe.getInstance(), file);
+        } catch (SAXException ex) {
             Exceptions.printStackTrace(ex);
         }
     }
