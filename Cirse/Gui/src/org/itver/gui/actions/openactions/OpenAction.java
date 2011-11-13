@@ -4,6 +4,7 @@
  */
 package org.itver.gui.actions.openactions;
 
+import java.awt.FileDialog;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -50,8 +51,7 @@ public final class OpenAction implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        File file = Dialogs.openDialog(".xml");
-        MainScene.getInstance().clearScene();
+        File file = Dialogs.fileDialog(FileDialog.LOAD, "xml");            
         Universe.getInstance().loadFile(file);
 //        try {
 //            properties.store(new FileOutputStream(Constants.DATA), null);
