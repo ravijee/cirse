@@ -118,8 +118,7 @@ public class MainSceneComponent extends BranchGroup {
     }
     
      /**
-     * Construye una nueva instancia de MainSceneComponent dados un
-     * indentificador único, tipo y ruta.
+     * Construye una nueva instancia de MainSceneComponent dados un tipo y ruta.
      * @param type Tipo de componente.
      * @param source Ruta en la que se localiza el archivo del componente a crear.
      * @see org.itver.graphics.util.ComponentType
@@ -258,12 +257,6 @@ public class MainSceneComponent extends BranchGroup {
         setPositionTransform();
     }
 
-    /*Valorar para borrar o dejar
-    public void updateRotation(){
-
-    }
-    */
-
     /**
      * Establece la posición del objeto actual.
      * @param newPos Posición del objeto expresada con un arreglo de valores
@@ -382,6 +375,9 @@ public class MainSceneComponent extends BranchGroup {
         this.scale = scale;
         t3d = new Transform3D();
         t3d.setScale(scale);
+        setRotationTransform();
+        setPositionTransform();
+//        t3d.setTranslation(new Vector3d(position));
         transformGroup.setTransform(t3d);
     }
 

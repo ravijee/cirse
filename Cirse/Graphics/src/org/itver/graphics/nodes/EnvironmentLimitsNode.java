@@ -15,7 +15,7 @@ import org.openide.util.lookup.Lookups;
 
 /**
  * CLASE EN DESUSO
- *
+ * @deprecated 
  * @author Karo
  */
 public class EnvironmentLimitsNode extends AbstractNode{

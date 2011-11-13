@@ -20,9 +20,7 @@ import javax.media.j3d.TransformGroup;
 import javax.vecmath.Color3f;
 import javax.vecmath.Vector3d;
 import org.itver.common.xml.SceneFromXML;
-import org.itver.common.xml.XmlLoader;
 import org.itver.graphics.controller.PickComponentBehavior;
-import org.itver.graphics.io.EnvironmentInterpreter;
 import org.itver.graphics.io.EnvironmentParser;
 import org.itver.graphics.io.EnvironmentSaver;
 import org.itver.graphics.util.LightType;
@@ -36,8 +34,6 @@ import org.xml.sax.SAXException;
  * los {@code comportamientos} que actúan sobre los objetos que están dentro de
  * la {@code escena principal} y los asocia a un {@code SimpleUniverse}.
  *
- * @see <a href="http://download.oracle.com/docs/cd/E17802_01/j2se/javase/technologies/desktop/java3d/forDevelopers/J3D_1_3_API/j3dapi/javax/media/j3d/Behavior.html" target="_blank">Behavior</a>
- * @see <a href="http://download.java.net/media/java3d/javadoc/1.4.0/com/sun/j3d/utils/universe/SimpleUniverse.html" target="_blank">SimpleUniverse</a>
  * @author Karo
  */
 public class Universe{
@@ -86,6 +82,11 @@ public class Universe{
         }
     }
     
+     /**
+     * Salva la configuración  las propiedades del entorno de simulación desde 
+     * un archivo de configuración XML. 
+     * @param file Ruta del archivo de configuración.
+     */    
     public void saveFile(File file){
         try {
             EnvironmentSaver saver = new EnvironmentSaver(1.0f);

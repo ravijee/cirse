@@ -27,11 +27,11 @@ import org.itver.graphics.util.XYZ;
  * objetos necesarios para construir la <i>escena principal</i> de la simulación.
  * Entre los principales componentes de la escena se encuentran los
  * {@link EnvironmentLimits limites}, los {@link MainSceneComponent componentes}
- * y las {@link <a href="http://download.oracle.com/docs/cd/E17802_01/j2se/javase/technologies/desktop/java3d/forDevelopers/J3D_1_3_API/j3dapi/javax/media/j3d/Light.html" target="_blank"> luces</a>}.
+ * y las {@link SceneLight luces}.
  * <br>
- * Mientras que las {@code luces} y los {@code componentes} son almacenados en 
- * estructuras de datos genéricas, los {@code límites} no lo son, debido a que 
- * siempre existe únicamente una instancia de los mismos.
+ * Mientras que las luces y los componentes son almacenados en 
+ * estructuras de datos genéricas, los límites únicamente existen una vez 
+ * por cada entorno.
  * </br>
  * @author Karo
  */
@@ -306,6 +306,9 @@ public class MainScene extends BranchGroup {
         return this.selectedObject;
     }
     
+    /**
+     * Limpia la escena y sus componentes.
+     */
     public void clearScene(){
         for (int i = 0; i < components.size(); i++)
             components.get(i).detach();

@@ -8,6 +8,7 @@ import org.itver.graphics.util.CuboidGeometry;
 import com.sun.j3d.utils.geometry.GeometryInfo;
 import com.sun.j3d.utils.geometry.NormalGenerator;
 import com.sun.j3d.utils.image.TextureLoader;
+import java.awt.Color;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.io.File;
@@ -105,9 +106,9 @@ public class EnvironmentLimits extends BranchGroup {
      * Construye una nueva instancia de EnvironmentLimits que simula una sala
      * con cuatro paredes, un piso y un techo.
      * @param deepness Define la profundidad de la sala creada.
-     * @param width - Define el ancho de la sala creada.
-     * @param height - Define la altura de la sala creada.
-     * @param thickness - Define el grosor de cada bloque limitador en la sala
+     * @param width Define el ancho de la sala creada.
+     * @param height Define la altura de la sala creada.
+     * @param thickness Define el grosor de cada bloque limitador en la sala
      * creada.
      */
     private EnvironmentLimits(float width, float height, float deepness, float thickness) {
@@ -214,11 +215,10 @@ public class EnvironmentLimits extends BranchGroup {
     }
 
     /**
-     * Crea una apariencia genérica para cada uno de los bloques limitadores.
+     * @deprecated 
+     * Método obsoleto. No usar. 
      */
-    //************Cambiar esto para que tome valores del archivo y que además
-    //acepte texturas.
-    @Deprecated
+
     private void createDefaultAppearance() {
         Appearance ap = new Appearance();
         TextureAttributes ta = new TextureAttributes();
@@ -235,22 +235,51 @@ public class EnvironmentLimits extends BranchGroup {
         }
     }
     
-    public void createMaterial(Color3f ambient, Color3f emissive, Color3f diffuse, Color3f specular, float shininess){
+    /**
+     * Crea un material para aplicarlo a la apariencia de los bloques limitadores.
+     * @param ambient Color de ambiente.
+     * @param emissive Color ____
+     * @param diffuse Color ___
+     * @param specular Color ___
+     * @param shininess Brillo del material.
+     */
+    private void updateMaterial(Color3f ambient, Color3f emissive, Color3f diffuse, Color3f specular, float shininess){
         Appearance appearance = new Appearance();
         Material material = new Material(ambient, emissive, diffuse, specular, shininess);
         appearance.setMaterial(material);
-        for (int i = 0; i < limits.length; i++) {
-            limits[i].setAppearance(appearance);
-        }
+        setAppearance(appearance);
     }
     
+    /**
+     * Aplica un material determinado a la apariencia de los bloques limitadores.
+     * @param material Material de los límites.
+     */
     public void setLimitMaterial(Material material){
         Appearance appearance = new Appearance();
         appearance.setMaterial(material);
-        for (int i = 0; i < limits.length; i++) {
-            limits[i].setAppearance(appearance);
-        }
+        this.setAppearance(appearance);
+//        for (int i = 0; i < limits.length; i++) {
+//            limits[i].setAppearance(appearance);
+//        }
     }
+    //********************************************************************************
+    //EL SIGUIENTE BLOQUE DE MÉTODOS FORMA PARTE DE UN ASPECTO IMPORTANTE A 
+    //CONSIDERAR SOBRE ESTA CLASE:
+    //Como se puede ver, la clase no cuenta con atributos de Appearance ni 
+    //Material (lo mismo aplica para los atributos del material, que son 4 colores
+    //y un flotante), lo que hizo que la implementación de los siguientes métodos se
+    //volviera (muy probablemente) más compleja y extensa de lo que en realidad
+    //podría haber sido si se hubieran puestos dos atributos para cada cosa.
+    //
+    //En lugar de eso, todo se realiza a través de variables locales que se asignan
+    //a los respectivos atributos Appearance de cada uno de los Shape3D que representan
+    //cada uno de los límites.
+    //
+    //Evaluar si en un futuro es conveniente cambiar o dejarse así.
+    //Si se llega a dejar así, asegurar que no se repitan líneas de código ni 
+    //de que se usen líneas nuevas de código para hacer cosas que ya hacen otros
+    //métodos de esta misma clase.
+    //********************************************************************************
     
     //CUIDADO con este método
     //Regresa el material asociado a la apriencia de los límites
@@ -261,7 +290,7 @@ public class EnvironmentLimits extends BranchGroup {
     }
     //CUIDADO con este método
     //Regresa los colores del material de la apariencia aplicada a todos los límites
-    //Los regresa ordenados como : ambient, emissive, diffuse y specular
+    //Los regresa ordenados como : ambient(0), emissive(1), diffuse(2) y specular(3)
     public Color3f[] getMaterialColors(){
         Color3f[] colors = new Color3f[4];
         for (int i = 0; i < colors.length; i++) {
@@ -274,17 +303,99 @@ public class EnvironmentLimits extends BranchGroup {
         return colors;
     }
     //CUIDADO con este método
+    //Tiene getAppearance()[0] porque todos los límites tienen la misma Appearance.
+    public Color getMaterialAmbientColor(){
+        Color3f ambientColor = new Color3f();
+        getAppearance()[0].getMaterial().getAmbientColor(ambientColor);
+        return ambientColor.get(); 
+    }
+    //CUIDADO con este método
+    public void setMaterialAmbientColor(Color ambientColor){
+        Color old = getMaterialAmbientColor();
+        Color3f nColor = new Color3f(ambientColor);
+        //Material mat = new Material();
+        updateMaterial(nColor, new Color3f(getMaterialEmissiveColor()), 
+                               new Color3f(getMaterialDiffuseColor()), 
+                               new Color3f(getMaterialSpecularColor()), 
+                       this.getMaterialShininess());
+        pcs.firePropertyChange("ambientColor", old, nColor);
+    }
+        public Color getMaterialEmissiveColor(){
+        Color3f emissiveColor = new Color3f();
+        getAppearance()[0].getMaterial().getEmissiveColor(emissiveColor);
+        return emissiveColor.get(); 
+    }
+    //CUIDADO con este método
+    public void setMaterialEmissiveColor(Color emissiveColor){
+        Color old = getMaterialEmissiveColor();
+        Color3f nColor = new Color3f(emissiveColor);
+        updateMaterial(new Color3f(getMaterialAmbientColor()), nColor, 
+                            new Color3f(getMaterialDiffuseColor()), 
+                            new Color3f(getMaterialSpecularColor()), 
+                            getMaterialShininess());
+        pcs.firePropertyChange("emissiveColor", old, nColor);
+    }    
+    
+    public Color getMaterialDiffuseColor(){
+        Color3f diffuseColor = new Color3f();
+        getAppearance()[0].getMaterial().getDiffuseColor(diffuseColor);
+        return diffuseColor.get(); 
+    }
+    
+    //CUIDADO con este método
+    public void setMaterialDiffuseColor(Color diffuseColor){
+        Color old = getMaterialDiffuseColor();
+        Color3f nColor = new Color3f(diffuseColor);
+        this.updateMaterial(new Color3f(getMaterialAmbientColor()), 
+                            new Color3f(getMaterialEmissiveColor()), nColor, 
+                            new Color3f(getMaterialSpecularColor()), 
+                            getMaterialShininess());
+        pcs.firePropertyChange("diffuseColor", old, nColor);
+    }    
+    
+    public Color getMaterialSpecularColor(){
+        Color3f specularColor = new Color3f();
+        getAppearance()[0].getMaterial().getSpecularColor(specularColor);
+        return specularColor.get(); 
+    }
+    //CUIDADO con este método
+    public void setMaterialSpecularColor(Color specularColor){
+        Color old = getMaterialSpecularColor();
+        Color3f nColor = new Color3f(specularColor);
+        this.updateMaterial(new Color3f(getMaterialAmbientColor()), 
+                            new Color3f(getMaterialEmissiveColor()), 
+                            new Color3f(getMaterialDiffuseColor()), nColor, 
+                            getMaterialShininess());
+        pcs.firePropertyChange("specularColor", old, nColor);
+    }
+    
+    //CUIDADO con este método
     //Regresa el brillo del material aplicado a todos los límites
     public float getMaterialShininess(){
         float shininess = getAppearanceMaterial().getShininess();
         return shininess;
     }
+    
+    public void setMaterialShininess(float shininess){
+        float old = getMaterialShininess();
+        this.updateMaterial(new Color3f(getMaterialAmbientColor()), 
+                            new Color3f(getMaterialEmissiveColor()), 
+                            new Color3f(getMaterialDiffuseColor()), 
+                            new Color3f(getMaterialSpecularColor()), shininess);
+        pcs.firePropertyChange("shininess", old, shininess);
+    }
+    //***********************************************************************
+    //***********************************************************************
+    //FIN DE BLOQUE**********************************************************
+    //***********************************************************************
+    //***********************************************************************
+    
     /**
      * Establece una apariencia dada a un bloque limitador específico.
      * @param limit Límite sobre el que se quiere aplicar la apariencia.
      * @param app Apariencia que se desea aplicar a un límite específico.
      */
-    public void setAppearance(int limit, Appearance app) {
+    private void setAppearance(int limit, Appearance app) {
         limits[limit].setAppearance(app);
     }
 
@@ -293,7 +404,7 @@ public class EnvironmentLimits extends BranchGroup {
      * @param limit Límite del que se desea obtener su apariencia.
      * @return Apariencia del límite especificado.
      */
-    public Appearance getAppearance(int limit) {
+    private Appearance getAppearance(int limit) {
         return limits[limit].getAppearance();
     }
 
@@ -301,7 +412,7 @@ public class EnvironmentLimits extends BranchGroup {
      * Establece una apariencia determinada a todos los límites de entorno.
      * @param app Apariencia que se desea poner en todos los límites.
      */
-    public void setAppearance(Appearance app) {
+    private void setAppearance(Appearance app) {
         for (int i = 0; i < limits.length; i++) {
             limits[i].setAppearance(app);
         }
@@ -312,7 +423,7 @@ public class EnvironmentLimits extends BranchGroup {
      * límites.
      * @return Arreglo de todas las apariencias.
      */
-    public Appearance[] getAppearance() {
+    private Appearance[] getAppearance() {
         Appearance[] limitApp = new Appearance[LIMITS];
         for (int i = 0; i < limits.length; i++) {
             limitApp[i] = limits[i].getAppearance();
