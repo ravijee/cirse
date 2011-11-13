@@ -17,21 +17,43 @@ import org.itver.graphics.model.SceneLight;
 import org.itver.graphics.model.Universe;
 import org.xml.sax.SAXException;
 
+/**
+ * Esta clase guarda la configuración de las propiedades del entorno tridimensional
+ * en un archivo XML.
+ * @author Karo
+ */
 public class EnvironmentSaver {
     private XmlSaver saver;
     private float version;
 
+    /**
+     * Crea un {@code EnvironmentSaver} recibiendo la versión de documento
+     * que va a guardar.
+     * @param version Version del documento XML.
+     */
     public EnvironmentSaver(float version){
         saver = new XmlSaver();
         this.version = version;
     }
-
+    
+    /**
+     * Guarda la configuración del entorno tridimensional en un archivo 
+     * especificado.
+     * @param universe Universo cuya configuración se desea guardar.
+     * @param file Archivo en el que se guardará la configuración.
+     * @throws SAXException 
+     */
     public void save(Universe universe, File file) throws SAXException{
         saver.startFile("doctypes/"+ XmlSaver.DOCTYPE_UNIVERSE, file.getAbsolutePath());
         generateUniverse(universe);
         saver.endFile();
     }
     
+    /**
+     * Genera la estructura del archivo XML del Universo.
+     * @param universe Universo a guardar.
+     * @throws SAXException 
+     */
     private void generateUniverse(Universe universe) throws SAXException{
         saver.addAttribute("version", XmlSaver.CDATA, version+"");
         saver.startTag("universe");
@@ -44,6 +66,11 @@ public class EnvironmentSaver {
         saver.closeTag("universe");
     }
 
+    /**
+     * Genera la estructura del archivo XML para el fondo de la escena.
+     * @param universe Universo a guardar.
+     * @throws SAXException 
+     */
     private void generateBackground(Universe universe) throws SAXException {
         File bgFile = universe.getScene().getBackgroundFile();
         if(bgFile != null){
@@ -56,6 +83,11 @@ public class EnvironmentSaver {
         }
     }
 
+    /**
+     * Genera la estructura del archivo XML para los límites.
+     * @param universe Universo a guardar.
+     * @throws SAXException 
+     */
     private void generateLimits(Universe universe) throws SAXException {
         float[] values = universe.getEnvirionmentLimits().getEnvironmentValues();
         String[] tagNames = new String[]{"width", "height", "deepness", "thickness",
@@ -77,16 +109,13 @@ public class EnvironmentSaver {
         }
         saver.closeTag("appearance");
         saver.closeTag("limits");
-        //        String w = String.valueOf(universe.getScene().getEnvironmentLimits().getWidth());
-//        String h = String.valueOf(universe.getScene().getEnvironmentLimits().getHeight());
-//        String d = String.valueOf(universe.getScene().getEnvironmentLimits().getDeepness());
-//        String t = String.valueOf(universe.getScene().getEnvironmentLimits().getThickness());
-//        saver.startTag("width", w);
-//        saver.startTag("height", h);
-//        saver.startTag("deepness", d);
-//        saver.startTag("thickness", t);
     }
 
+    /**
+     * Genera la estructura del archivo XML para las luces del universo.
+     * @param universe Universo a guardar.
+     * @throws SAXException 
+     */
     private void generateLights(Universe universe) throws SAXException {
         ArrayList<SceneLight> lights = universe.getScene().getLightArray();
         for (int i = 0; i < lights.size(); i++) {
@@ -111,6 +140,11 @@ public class EnvironmentSaver {
         }
     }
 
+    /**
+     * Genera la estructura del archivo XML para los componentes de la escena.
+     * @param universe Universo a guardar.
+     * @throws SAXException 
+     */
     private void generateComponents(Universe universe) throws SAXException {
         ArrayList<MainSceneComponent> components = universe.getScene().getComponentArray();
         for (int i = 0; i < components.size(); i++) {

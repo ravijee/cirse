@@ -21,7 +21,9 @@ import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 
 /**
- *
+ * Esta clase analiza un archivo XML determinado y a partir de su contenido crea 
+ * el entorno tridimensional con características específicas.
+ * @see SceneHandler
  * @author Karo
  */
 public class EnvironmentParser extends SceneHandler{
@@ -31,10 +33,21 @@ public class EnvironmentParser extends SceneHandler{
     private int lightIndex;
     private MainSceneComponent component;
     
+    /**
+     * Crea una instancia del analizador para una escena.
+     * @param mainScene Escena a construir.
+     */
     public EnvironmentParser(MainScene mainScene){
         this.mainScene = mainScene;
     }
 
+    /**
+     * Analiza el contenido de cada etiqueta XML.
+     * @param ch Caracteres que contiene la etiqueta.
+     * @param start Inicio de los caracteres.
+     * @param length Longitud de caracteres.
+     * @throws SAXException 
+     */
     @Override
     public void characters(char[] ch, int start, int length) throws SAXException {
         String content = String.valueOf(ch, start, length);
@@ -147,6 +160,14 @@ public class EnvironmentParser extends SceneHandler{
         }
     }
 
+    /**
+     * Analiza las etiquetas que abren un elemento en XML.
+     * @param uri
+     * @param localName 
+     * @param qName Nombre de la etiqueta.
+     * @param attributes Atributos del elemento.
+     * @throws SAXException 
+     */
     @Override
     public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
         element = Element.valueOf(qName);
@@ -169,6 +190,10 @@ public class EnvironmentParser extends SceneHandler{
         }
     }
     
+    /**
+     * Construye el fondo de la escena
+     * @param attr Atributo del fondo.
+     */
     private void initBackground(Attributes attr){
         File textureFile = new File(attr.getValue("src"));
         if(attr.getLength() != 0){
@@ -176,13 +201,21 @@ public class EnvironmentParser extends SceneHandler{
         }
     }
     
+    /**
+     * Inicializa una textura para los límites en caso de que exista.
+     * @param attr Atributo de la textura.
+     */
     private void initLimitTexture(Attributes attr){
         File limitTexture = new File(attr.getValue("src"));
-        if(attr.getValue("enabled").equals(Element.enabled.name())){
+        if(attr.getValue("enabled").equals(String.valueOf(Boolean.TRUE))){
             mainScene.getEnvironmentLimits().setTexture(limitTexture);
         }
     }
     
+    /**
+     * Crea tantas luces como haya en el arreglo de luces MainScene.
+     * @param attr Atributo de la luz.
+     */
     private void initLight(Attributes attr){
         LightType type = LightType.valueOf(attr.getValue("type"));
         SceneLight sceneLight = new SceneLight(type);
@@ -190,6 +223,11 @@ public class EnvironmentParser extends SceneHandler{
         lightIndex = mainScene.getLightArray().indexOf(sceneLight);
     }
     
+    /**
+     * Crea tantos MainSceneComponents como haya en el arreglo de componentes
+     * MainScene
+     * @param attr Atributos de los componentes.
+     */
     private void initMainSceneComponent(Attributes attr){
         ComponentType type = ComponentType.valueOf(attr.getValue("type"));
         File source = new File(attr.getValue("src"));

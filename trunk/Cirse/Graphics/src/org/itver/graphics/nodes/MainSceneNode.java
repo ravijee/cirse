@@ -5,8 +5,8 @@
 
 package org.itver.graphics.nodes;
 
+import java.awt.Color;
 import java.awt.Image;
-import java.io.File;
 import java.util.ArrayList;
 import org.itver.common.util.Converter;
 import org.itver.graphics.model.MSComponentContent;
@@ -51,29 +51,52 @@ public class MainSceneNode extends AbstractNode{
     protected Sheet createSheet() {
         Sheet result = Sheet.createDefault();
         Sheet.Set props = Sheet.createPropertiesSet();
+        Sheet.Set materialProps = Sheet.createPropertiesSet();
+        Sheet.Set textureProps = Sheet.createPropertiesSet();
+        materialProps.setDisplayName("Material Colors");
+        materialProps.setName("material");
+        textureProps.setDisplayName("Material Texture");
+        textureProps.setName("texture");
         try {
             Property width = new PropertySupport.Reflection(ms.getEnvironmentLimits(), float.class, "width");
             Property height = new PropertySupport.Reflection(ms.getEnvironmentLimits(), float.class, "height");
             Property deepness = new PropertySupport.Reflection(ms.getEnvironmentLimits(), float.class, "deepness");
             Property thickness = new PropertySupport.Reflection(ms.getEnvironmentLimits(), float.class, "thickness");
-            Property textureFlag = new PropertySupport.Reflection(ms.getEnvironmentLimits(), boolean.class, "hasTexture", "setTextureFlag");
-            Property texture = new PropertySupport.Reflection(ms.getEnvironmentLimits(), File.class, "texture");
+            //Property textureFlag = new PropertySupport.Reflection(ms.getEnvironmentLimits(), boolean.class, "hasTexture", "setTextureFlag");
+            //Property texture = new PropertySupport.Reflection(ms.getEnvironmentLimits(), File.class, "texture");
 //            Property bgFlag = new PropertySupport.Reflection(ms, boolean.class, "hasBackgroundImage", "setBackgroundFlag");
 //            Property background = new PropertySupport.Reflection(ms, File.class, "backgroundImage");
+            Property ambientColor = new PropertySupport.Reflection(ms.getEnvironmentLimits(), Color.class, "getMaterialAmbientColor", "setMaterialAmbientColor");
+            Property emissiveColor = new PropertySupport.Reflection(ms.getEnvironmentLimits(), Color.class, "getMaterialEmissiveColor", "setMaterialEmissiveColor");
+            Property diffuseColor = new PropertySupport.Reflection(ms.getEnvironmentLimits(), Color.class, "getMaterialDiffuseColor", "setMaterialDiffuseColor");
+            Property specularColor = new PropertySupport.Reflection(ms.getEnvironmentLimits(), Color.class, "getMaterialSpecularColor", "setMaterialSpecularColor");
+            Property shininess = new PropertySupport.Reflection(ms.getEnvironmentLimits(), float.class, "getMaterialShininess", "setMaterialShininess");
             width.setName("Width");
             height.setName("Height");
             deepness.setName("Deepness");
             thickness.setName("Thickness");
-            textureFlag.setName("Texture on walls");
-            texture.setName("Texture file");
+            //textureFlag.setName("Activate");
+            //texture.setName("File");
 //            bgFlag.setName("Background image");
 //            background.setName("Background file");
+            ambientColor.setDisplayName("Ambient");
+            emissiveColor.setDisplayName("Emissive");
+            diffuseColor.setDisplayName("Diffuse");
+            specularColor.setDisplayName("Specular");
+            shininess.setDisplayName("Shininess");
+            
             props.put(width);
             props.put(height);
             props.put(deepness);
             props.put(thickness);
-            props.put(textureFlag);
-            props.put(texture);
+//            props.put(textureFlag);
+            materialProps.put(ambientColor);
+            materialProps.put(emissiveColor);
+            materialProps.put(diffuseColor);
+            materialProps.put(specularColor);
+            materialProps.put(shininess);
+            //textureProps.put(texture);
+            //textureProps.put(textureFlag);
 //            props.put(bgFlag);
 //            props.put(background);
 
@@ -81,6 +104,8 @@ public class MainSceneNode extends AbstractNode{
             System.err.println(ex.getMessage());
         }
         result.put(props);
+        result.put(materialProps);
+        result.put(textureProps);
         return result;
     }
 

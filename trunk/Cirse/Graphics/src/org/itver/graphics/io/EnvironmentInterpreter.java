@@ -166,7 +166,7 @@ public class EnvironmentInterpreter extends Interpreter {
             case shininess:
                 material.setShininess(Float.parseFloat(node.getTextContent()));
                 limitApp.setMaterial(material);
-                mainScene.getEnvironmentLimits().setAppearance(limitApp);
+//                mainScene.getEnvironmentLimits().setAppearance(limitApp);
                 break;
             case color:
                 sceneLight.setColor(new Color3f(

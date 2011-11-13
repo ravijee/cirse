@@ -9,8 +9,9 @@ import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
 
 /**
- *
+ * NUNCA usar
  * @author Karo
+ * @deprecated
  */
 public class PropertyTableListener implements TableModelListener{
 

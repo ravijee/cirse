@@ -11,8 +11,9 @@ import javax.vecmath.Point3d;
 import javax.vecmath.Vector3d;
 
 /**
- * Clase en desuso, valorar para dejar o borrar.
+ * NO usar.
  * @author Karo
+ * @deprecated 
  */
 public class Camera {
     private PropertyChangeSupport x;
