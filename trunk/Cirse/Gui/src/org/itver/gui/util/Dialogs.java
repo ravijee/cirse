@@ -37,7 +37,9 @@ public final class Dialogs {
      * @param extensionAllowed No implementado aun, extension de archivos 
      * permitidos.
      * @return Archivo seleccionado. {@code null} si no selcciono nada.
+     * @deprecated Usar {@link #fileDialog(int, java.lang.String) FileDialog}
      */
+    @Deprecated
     public static File openDialog(String extensionAllowed){
         JFileChooser chooser = new JFileChooser();
         chooser.setCurrentDirectory(dir);
@@ -54,7 +56,9 @@ public final class Dialogs {
      * Regresando el archivo que se selecciono.
      * @return  Archivo seleccionado para guardar. {@code null} si no selecciona
      * nada.
+     * @deprecated Usar {@link #fileDialog(int, java.lang.String) FileDialog}
      */
+    @Deprecated
     public static File saveDialog(){
         JFileChooser chooser = new JFileChooser();
         chooser.setCurrentDirectory(dir);
