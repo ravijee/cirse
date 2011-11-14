@@ -105,8 +105,8 @@ public class MainScene extends BranchGroup {
      * @param sceneLight Luz que será agregada.
      */
     public void addLight(SceneLight sceneLight){
-        sceneLight.getLight().setInfluencingBounds(new BoundingSphere(new Point3d(),
-                EnvironmentLimits.getInstance().getHighest()));
+//        sceneLight.getLight().setInfluencingBounds(new BoundingSphere(new Point3d(),
+//                EnvironmentLimits.getInstance().getHighest()));
 //        sceneLight.getLight().setCapability(Light.ALLOW_INFLUENCING_BOUNDS_WRITE);
         lights.add(sceneLight);
         addChild(sceneLight);
@@ -180,17 +180,6 @@ public class MainScene extends BranchGroup {
         return backgroundFlag;
 
     }
-
-    /**
-    Evaluar para borrar o dejar.
-    public void addLights() {
-        for (int i = 0; i < lights.size(); i++) {
-            lights.get(i).setInfluencingBounds(new BoundingSphere(new Point3d(),
-                EnvironmentLimits.getInstance().getHighest()));
-            this.addChild(lights.get(i));
-        }
-    }
-    */
 
     /**
      * Regresa las luces de la escena principal.

@@ -204,10 +204,11 @@ public class EnvironmentParser extends SceneHandler{
      * @param attr Atributo del fondo.
      */
     private void initBackground(Attributes attr){
-        File textureFile = new File(attr.getValue("src"));
         if(attr.getLength() != 0){
+//        if(textureFile != null)
+            File textureFile = new File(attr.getValue("src"));
             mainScene.setBackgroundFile(textureFile);
-        }
+        }    
     }
     
     /**
