@@ -7,6 +7,7 @@ package org.itver.graphics.nodes;
 
 import java.awt.Color;
 import java.awt.Image;
+import java.io.File;
 import java.util.ArrayList;
 import org.itver.common.util.Converter;
 import org.itver.graphics.model.MSComponentContent;
@@ -62,8 +63,8 @@ public class MainSceneNode extends AbstractNode{
             Property height = new PropertySupport.Reflection(ms.getEnvironmentLimits(), float.class, "height");
             Property deepness = new PropertySupport.Reflection(ms.getEnvironmentLimits(), float.class, "deepness");
             Property thickness = new PropertySupport.Reflection(ms.getEnvironmentLimits(), float.class, "thickness");
-            //Property textureFlag = new PropertySupport.Reflection(ms.getEnvironmentLimits(), boolean.class, "hasTexture", "setTextureFlag");
-            //Property texture = new PropertySupport.Reflection(ms.getEnvironmentLimits(), File.class, "texture");
+            Property textureFlag = new PropertySupport.Reflection(ms.getEnvironmentLimits(), boolean.class, "hasTexture", "setTextureFlag");
+            Property texture = new PropertySupport.Reflection(ms.getEnvironmentLimits(), File.class, "texture");
 //            Property bgFlag = new PropertySupport.Reflection(ms, boolean.class, "hasBackgroundImage", "setBackgroundFlag");
 //            Property background = new PropertySupport.Reflection(ms, File.class, "backgroundImage");
             Property ambientColor = new PropertySupport.Reflection(ms.getEnvironmentLimits(), Color.class, "getMaterialAmbientColor", "setMaterialAmbientColor");
@@ -75,8 +76,8 @@ public class MainSceneNode extends AbstractNode{
             height.setName("Height");
             deepness.setName("Deepness");
             thickness.setName("Thickness");
-            //textureFlag.setName("Activate");
-            //texture.setName("File");
+            textureFlag.setName("Activate");
+            texture.setName("File");
 //            bgFlag.setName("Background image");
 //            background.setName("Background file");
             ambientColor.setDisplayName("Ambient");
@@ -95,8 +96,8 @@ public class MainSceneNode extends AbstractNode{
             materialProps.put(diffuseColor);
             materialProps.put(specularColor);
             materialProps.put(shininess);
-            //textureProps.put(texture);
-            //textureProps.put(textureFlag);
+            textureProps.put(texture);
+            textureProps.put(textureFlag);
 //            props.put(bgFlag);
 //            props.put(background);
 
