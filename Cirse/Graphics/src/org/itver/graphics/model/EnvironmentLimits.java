@@ -257,7 +257,7 @@ public class EnvironmentLimits extends BranchGroup {
     public void setLimitMaterial(Material material){
         Appearance appearance = new Appearance();
         appearance.setMaterial(material);
-        this.setAppearance(appearance);
+        setAppearance(appearance);
 //        for (int i = 0; i < limits.length; i++) {
 //            limits[i].setAppearance(appearance);
 //        }
@@ -412,7 +412,7 @@ public class EnvironmentLimits extends BranchGroup {
      * Establece una apariencia determinada a todos los límites de entorno.
      * @param app Apariencia que se desea poner en todos los límites.
      */
-    private void setAppearance(Appearance app) {
+    public void setAppearance(Appearance app) {
         for (int i = 0; i < limits.length; i++) {
             limits[i].setAppearance(app);
         }
@@ -440,7 +440,8 @@ public class EnvironmentLimits extends BranchGroup {
         Texture t = new Texture2D(Texture2D.BASE_LEVEL, Texture2D.RGB, textureIm.getWidth(), textureIm.getHeight());
         t.setCapability(Texture.ALLOW_ENABLE_WRITE);
         t.setImage(0, textureIm);
-        Appearance ap = new Appearance();
+//        Appearance ap = new Appearance();
+        Appearance ap = limits[0].getAppearance();
         ap.setTexture(t);
         TextureAttributes textureAttr = new TextureAttributes();
         textureAttr.setTextureMode(TextureAttributes.REPLACE);

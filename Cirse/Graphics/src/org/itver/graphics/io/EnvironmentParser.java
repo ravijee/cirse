@@ -6,6 +6,7 @@ package org.itver.graphics.io;
 
 import java.awt.Color;
 import java.io.File;
+import javax.media.j3d.Appearance;
 import javax.media.j3d.Material;
 import javax.vecmath.Point3f;
 import javax.vecmath.Vector3f;
@@ -76,22 +77,27 @@ public class EnvironmentParser extends SceneHandler{
                 break;
             case ambient:
                 float[] ambientColor = Converter.stringToFloatArray(content);
+//                mainScene.getEnvironmentLimits().setMaterialAmbientColor(new Color(ambientColor[0], ambientColor[1], ambientColor[2]));
                 material.setAmbientColor(ambientColor[0], ambientColor[1], ambientColor[2]);
                 break;
             case emissive:
                 float[] emissiveColor = Converter.stringToFloatArray(content);
+//                mainScene.getEnvironmentLimits().setMaterialEmissiveColor(new Color(emissiveColor[0], emissiveColor[1], emissiveColor[0]));
                 material.setEmissiveColor(emissiveColor[0], emissiveColor[1], emissiveColor[0]);
                 break;
             case diffuse:
                 float[] diffuseColor = Converter.stringToFloatArray(content);
+//                mainScene.getEnvironmentLimits().setMaterialDiffuseColor(new Color(diffuseColor[0], diffuseColor[1], diffuseColor[2]));
                 material.setDiffuseColor(diffuseColor[0], diffuseColor[1], diffuseColor[2]);
                 break;
             case specular:
                 float[] specularColor = Converter.stringToFloatArray(content);
+//                mainScene.getEnvironmentLimits().setMaterialSpecularColor(new Color(specularColor[0], specularColor[1], specularColor[2]));
                 material.setSpecularColor(specularColor[0], specularColor[1], specularColor[2]);
                 break;
             case shininess:
                 float shininess = Float.parseFloat(content);
+//                mainScene.getEnvironmentLimits().setMaterialShininess(shininess);
                 material.setShininess(shininess);
                 mainScene.getEnvironmentLimits().setLimitMaterial(material);
                 break;
@@ -187,6 +193,9 @@ public class EnvironmentParser extends SceneHandler{
             case material:
                material = new Material();
                break;
+//            case appearance:
+//               mainScene.getEnvironmentLimits().setAppearance(new Appearance()); 
+//               break; 
         }
     }
     
@@ -209,6 +218,7 @@ public class EnvironmentParser extends SceneHandler{
         File limitTexture = new File(attr.getValue("src"));
         if(attr.getValue("enabled").equals(String.valueOf(Boolean.TRUE))){
             mainScene.getEnvironmentLimits().setTexture(limitTexture);
+            mainScene.getEnvironmentLimits().setTextureFlag(true);
         }
     }
     
