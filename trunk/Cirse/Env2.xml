@@ -24,7 +24,7 @@
                     <specular>0.89, 0.89, 0.89</specular>
                     <shininess>1</shininess>
                  </material>
-                <!--<texture src="texture3.jpg" enabled="true"/>-->     
+                <texture src="texture3.jpg" enabled="true"/>
             </appearance>
         </limits>
         <light type="ambient">
