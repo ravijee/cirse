@@ -13,7 +13,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
 import org.itver.common.util.Constants;
-import org.itver.graphics.model.MainScene;
 import org.itver.graphics.model.Universe;
 //import org.itver.gui.visual.PropertyEditorTopComponent;
 import org.itver.gui.util.Dialogs;
@@ -52,7 +51,10 @@ public final class OpenAction implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         File file = Dialogs.fileDialog(FileDialog.LOAD, "xml");            
-        Universe.getInstance().loadFile(file);
+        if(file != null){
+            Universe.getInstance().getScene().clearScene();
+            Universe.getInstance().loadFile(file);
+        }    
 //        try {
 //            properties.store(new FileOutputStream(Constants.DATA), null);
 //        } catch (FileNotFoundException ex) {

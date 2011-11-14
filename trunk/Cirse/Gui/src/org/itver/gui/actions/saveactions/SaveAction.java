@@ -25,7 +25,8 @@ public final class SaveAction implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
             File file = Dialogs.fileDialog(FileDialog.SAVE, "xml");            
-            Universe.getInstance().saveFile(file);
+            if(file != null)
+                Universe.getInstance().saveFile(file);
     }
 //        JFileChooser fChooser = new JFileChooser();
 //        String file = "o";
