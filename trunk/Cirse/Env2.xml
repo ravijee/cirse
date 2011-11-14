@@ -10,7 +10,7 @@
 <!DOCTYPE universe SYSTEM "doctypes/dtdUniverse.dtd">
 <universe version="1.0">
     <content>
-        <background src="texture3.jpg">1, 1, 1</background>
+        <background src="texture3.jpg">1.0, 0.6, 0.6</background>
         <limits>
             <width>8</width>
             <height>5</height>
@@ -29,15 +29,6 @@
         </limits>
         <light type="ambient">
             <color>1, 0, 0</color>
-        </light>
-        <light type="directional">
-            <color>1, 0, 1</color>
-            <position>0, 0, 0</position>
-        </light>
-        <light type="point">
-            <color>0, 1, 1</color>
-            <position>0, 0, 0</position>
-            <attenuation>1, 0, 0</attenuation>
         </light>
         <object src="designs/Flecha.dae" type='furniture'>
             <scale>1</scale>
