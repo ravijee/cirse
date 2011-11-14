@@ -8,11 +8,13 @@ import java.awt.Color;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import javax.media.j3d.AmbientLight;
+import javax.media.j3d.BoundingSphere;
 import javax.media.j3d.BranchGroup;
 import javax.media.j3d.DirectionalLight;
 import javax.media.j3d.Light;
 import javax.media.j3d.PointLight;
 import javax.vecmath.Color3f;
+import javax.vecmath.Point3d;
 import javax.vecmath.Point3f;
 import javax.vecmath.Vector3f;
 import org.itver.graphics.util.LightType;
@@ -66,6 +68,7 @@ public class SceneLight extends BranchGroup{
         }
         this.addChild(light);
         this.setCapability(BranchGroup.ALLOW_DETACH);
+        light.setInfluencingBounds(new BoundingSphere(new Point3d(),500));
         light.setCapability(Light.ALLOW_COLOR_WRITE);
         light.setCapability(PointLight.ALLOW_POSITION_WRITE);
         light.setCapability(PointLight.ALLOW_ATTENUATION_WRITE);

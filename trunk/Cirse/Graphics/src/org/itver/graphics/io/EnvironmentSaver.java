@@ -75,12 +75,13 @@ public class EnvironmentSaver {
         File bgFile = universe.getScene().getBackgroundFile();
         if(bgFile != null){
             saver.addAttribute("src", XmlSaver.CDATA, bgFile.getPath());
-            saver.startTag("background");
-            saver.closeTag("background");
-        }else{
-            Color3f bgColor = new Color3f(universe.getScene().getBackgroundColor());
-            saver.startTag("background", Converter.tuple3fToString(bgColor) );
-        }
+        }    
+//        }else{
+//            Color3f bgColor = new Color3f(universe.getScene().getBackgroundColor());
+//            saver.startTag("background", Converter.tuple3fToString(bgColor));
+//        }
+        Color3f bgColor = new Color3f(universe.getScene().getBackgroundColor());
+        saver.startTag("background", Converter.tuple3fToString(bgColor));
     }
 
     /**
@@ -104,6 +105,7 @@ public class EnvironmentSaver {
         saver.closeTag("material");
         if(universe.getScene().getEnvironmentLimits().getTexture()!= null){
             saver.addAttribute("src", XmlSaver.CDATA, universe.getEnvirionmentLimits().getTexture().getPath());
+            saver.addAttribute("enabled", XmlSaver.CDATA, String.valueOf(universe.getEnvirionmentLimits().hasTexture()));
             saver.startTag("texture");
             saver.closeTag("texture");
         }

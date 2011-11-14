@@ -66,30 +66,35 @@ public class MainSceneNode extends AbstractNode{
             Property textureFlag = new PropertySupport.Reflection(ms.getEnvironmentLimits(), boolean.class, "hasTexture", "setTextureFlag");
             Property texture = new PropertySupport.Reflection(ms.getEnvironmentLimits(), File.class, "texture");
 //            Property bgFlag = new PropertySupport.Reflection(ms, boolean.class, "hasBackgroundImage", "setBackgroundFlag");
-//            Property background = new PropertySupport.Reflection(ms, File.class, "backgroundImage");
+            Property background = new PropertySupport.Reflection(ms, File.class, "backgroundFile");
+            Property bgColor = new PropertySupport.Reflection(ms, Color.class, "backgroundColor");
             Property ambientColor = new PropertySupport.Reflection(ms.getEnvironmentLimits(), Color.class, "getMaterialAmbientColor", "setMaterialAmbientColor");
             Property emissiveColor = new PropertySupport.Reflection(ms.getEnvironmentLimits(), Color.class, "getMaterialEmissiveColor", "setMaterialEmissiveColor");
             Property diffuseColor = new PropertySupport.Reflection(ms.getEnvironmentLimits(), Color.class, "getMaterialDiffuseColor", "setMaterialDiffuseColor");
             Property specularColor = new PropertySupport.Reflection(ms.getEnvironmentLimits(), Color.class, "getMaterialSpecularColor", "setMaterialSpecularColor");
             Property shininess = new PropertySupport.Reflection(ms.getEnvironmentLimits(), float.class, "getMaterialShininess", "setMaterialShininess");
             width.setName("Width");
+            width.setShortDescription("LOLOLOLOLOL");
             height.setName("Height");
             deepness.setName("Deepness");
             thickness.setName("Thickness");
             textureFlag.setName("Activate");
             texture.setName("File");
+            bgColor.setName("Background color");
 //            bgFlag.setName("Background image");
-//            background.setName("Background file");
-            ambientColor.setDisplayName("Ambient");
-            emissiveColor.setDisplayName("Emissive");
-            diffuseColor.setDisplayName("Diffuse");
-            specularColor.setDisplayName("Specular");
-            shininess.setDisplayName("Shininess");
+            background.setName("Background file");
+            ambientColor.setName("Ambient");
+            emissiveColor.setName("Emissive");
+            diffuseColor.setName("Diffuse");
+            specularColor.setName("Specular");
+            shininess.setName("Shininess");
             
             props.put(width);
             props.put(height);
             props.put(deepness);
             props.put(thickness);
+            props.put(background);
+            props.put(bgColor);
 //            props.put(textureFlag);
             materialProps.put(ambientColor);
             materialProps.put(emissiveColor);
@@ -99,7 +104,6 @@ public class MainSceneNode extends AbstractNode{
             textureProps.put(texture);
             textureProps.put(textureFlag);
 //            props.put(bgFlag);
-//            props.put(background);
 
         } catch (NoSuchMethodException ex) {
             System.err.println(ex.getMessage());

@@ -27,6 +27,7 @@ import javax.media.j3d.TransformGroup;
 import javax.vecmath.Color3f;
 import javax.vecmath.Point3d;
 import javax.vecmath.Vector3f;
+import javax.vecmath.Vector4f;
 
 /**
  * Esta clase es la representación gráfica de los objetos que actúan como
@@ -245,6 +246,9 @@ public class EnvironmentLimits extends BranchGroup {
      */
     private void updateMaterial(Color3f ambient, Color3f emissive, Color3f diffuse, Color3f specular, float shininess){
         Appearance appearance = new Appearance();
+        appearance.setCapability(Appearance.ALLOW_TEXTURE_WRITE);
+        appearance.setCapability(Appearance.ALLOW_TEXTURE_ATTRIBUTES_WRITE);
+        appearance.setCapability(Appearance.ALLOW_TEXGEN_WRITE);
         Material material = new Material(ambient, emissive, diffuse, specular, shininess);
         appearance.setMaterial(material);
         setAppearance(appearance);
@@ -256,6 +260,9 @@ public class EnvironmentLimits extends BranchGroup {
      */
     public void setLimitMaterial(Material material){
         Appearance appearance = new Appearance();
+        appearance.setCapability(Appearance.ALLOW_TEXTURE_WRITE);
+        appearance.setCapability(Appearance.ALLOW_TEXTURE_ATTRIBUTES_WRITE);
+        appearance.setCapability(Appearance.ALLOW_TEXGEN_WRITE);
         appearance.setMaterial(material);
         setAppearance(appearance);
 //        for (int i = 0; i < limits.length; i++) {
@@ -318,6 +325,8 @@ public class EnvironmentLimits extends BranchGroup {
                                new Color3f(getMaterialDiffuseColor()), 
                                new Color3f(getMaterialSpecularColor()), 
                        this.getMaterialShininess());
+        if(textureFlag)
+                setTexture(textureFile);
         pcs.firePropertyChange("ambientColor", old, nColor);
     }
         public Color getMaterialEmissiveColor(){
@@ -333,6 +342,8 @@ public class EnvironmentLimits extends BranchGroup {
                             new Color3f(getMaterialDiffuseColor()), 
                             new Color3f(getMaterialSpecularColor()), 
                             getMaterialShininess());
+        if(textureFlag)
+                setTexture(textureFile);
         pcs.firePropertyChange("emissiveColor", old, nColor);
     }    
     
@@ -350,6 +361,8 @@ public class EnvironmentLimits extends BranchGroup {
                             new Color3f(getMaterialEmissiveColor()), nColor, 
                             new Color3f(getMaterialSpecularColor()), 
                             getMaterialShininess());
+        if(textureFlag)
+                setTexture(textureFile);
         pcs.firePropertyChange("diffuseColor", old, nColor);
     }    
     
@@ -366,6 +379,8 @@ public class EnvironmentLimits extends BranchGroup {
                             new Color3f(getMaterialEmissiveColor()), 
                             new Color3f(getMaterialDiffuseColor()), nColor, 
                             getMaterialShininess());
+        if(textureFlag)
+                setTexture(textureFile);
         pcs.firePropertyChange("specularColor", old, nColor);
     }
     
@@ -382,6 +397,8 @@ public class EnvironmentLimits extends BranchGroup {
                             new Color3f(getMaterialEmissiveColor()), 
                             new Color3f(getMaterialDiffuseColor()), 
                             new Color3f(getMaterialSpecularColor()), shininess);
+        if(textureFlag)
+                setTexture(textureFile);
         pcs.firePropertyChange("shininess", old, shininess);
     }
     //***********************************************************************
@@ -432,24 +449,28 @@ public class EnvironmentLimits extends BranchGroup {
     }
 
     public void setTexture(File textureFile) {
-        File old = getTexture();
-        this.textureFile = textureFile;
-        pcs.firePropertyChange("Texture", old, textureFile);
-        TextureLoader textureLoad = new TextureLoader(textureFile.getPath(), null);
-        ImageComponent2D textureIm = textureLoad.getScaledImage(128, 128);
-        Texture t = new Texture2D(Texture2D.BASE_LEVEL, Texture2D.RGB, textureIm.getWidth(), textureIm.getHeight());
-        t.setCapability(Texture.ALLOW_ENABLE_WRITE);
-        t.setImage(0, textureIm);
-//        Appearance ap = new Appearance();
-        Appearance ap = limits[0].getAppearance();
-        ap.setTexture(t);
-        TextureAttributes textureAttr = new TextureAttributes();
-        textureAttr.setTextureMode(TextureAttributes.REPLACE);
-        ap.setTextureAttributes(textureAttr);
-        TexCoordGeneration tcg = new TexCoordGeneration(TexCoordGeneration.OBJECT_LINEAR,
-                                                        TexCoordGeneration.TEXTURE_COORDINATE_2);
-        ap.setTexCoordGeneration(tcg);
-        this.setAppearance(ap);
+        
+            File old = getTexture();
+            this.textureFile = textureFile;
+            pcs.firePropertyChange("Texture", old, textureFile);
+            TextureLoader textureLoad = new TextureLoader(textureFile.getPath(), null);
+            ImageComponent2D textureIm = textureLoad.getScaledImage(128, 128);
+            Texture t = new Texture2D(Texture2D.BASE_LEVEL, Texture2D.RGB, textureIm.getWidth(), textureIm.getHeight());
+            t.setCapability(Texture.ALLOW_ENABLE_WRITE);
+            t.setImage(0, textureIm);
+//            t.setEnable(textureFlag);
+    //        Appearance ap = new Appearance();
+            Appearance ap = limits[0].getAppearance();
+            ap.setTexture(t);
+            TextureAttributes textureAttr = new TextureAttributes();
+            textureAttr.setTextureMode(TextureAttributes.COMBINE);
+            ap.setTextureAttributes(textureAttr);
+            float n = 5.0f;
+            TexCoordGeneration tcg = new TexCoordGeneration(TexCoordGeneration.OBJECT_LINEAR,
+                                                            TexCoordGeneration.TEXTURE_COORDINATE_2,
+                                                            new Vector4f(0, n, n, 0), new Vector4f(n, 0, 0, n));
+            ap.setTexCoordGeneration(tcg);
+            this.setAppearance(ap);
     }
 
     public File getTexture() {
@@ -460,6 +481,9 @@ public class EnvironmentLimits extends BranchGroup {
         boolean old = hasTexture();
         this.textureFlag = texture;
         pcs.firePropertyChange("Texture", old, texture);
+        //este if se agregó por el problema de que Material y Appearance no son atributos.
+        if(textureFlag)
+                setTexture(textureFile);
         for (int i = 0; i < limits.length; i++) {
             limits[i].getAppearance().getTexture().setEnable(texture);
         }
