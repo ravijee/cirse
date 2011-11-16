@@ -137,9 +137,9 @@ public final class ArmController implements PropertyChangeListener{
        try {
             Scene scene = loader.load(new FileReader(file));
             Arm arm = (Arm)scene.getSceneGroup();
-            arm.setSource(file);
             this.printSceneGraph(arm, 0);
             this.armToScene(arm);
+            arm.setSource(file);
         } catch (FileNotFoundException ex) {
             Dialogs.showErrorDialog("File not found: " + file.getPath());
         } catch(NullPointerException np){
