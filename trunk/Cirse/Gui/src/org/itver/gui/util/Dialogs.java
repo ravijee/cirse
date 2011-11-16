@@ -89,10 +89,16 @@ public final class Dialogs {
         dialog.setVisible(true);
         String file = dialog.getFile();
         String path = dialog.getDirectory();
+        String extension = "";
+        if((!(file.contains("."))) && 
+             extAllow.length() > 0 &&
+             mode == FileDialog.SAVE){
+            extension = "." + extAllow.split("[\\s]*,[\\s]*", 1)[0];
+        }
         if(file == null)
             return null;
         else
-            return new File(path + file);
+            return new File(path + file + extension);
     }
     /**
      * Muestra un mensaje en un dialogo de error.
@@ -114,7 +120,7 @@ public final class Dialogs {
         @Override
         public boolean accept(File dir, String name) {
             for(String fileName:fileNames)
-                if(name.endsWith(fileName))
+                if(name.endsWith("." + fileName))
                     return true;
             return false;
         }
