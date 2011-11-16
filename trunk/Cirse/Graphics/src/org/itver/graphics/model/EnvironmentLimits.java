@@ -175,6 +175,14 @@ public class EnvironmentLimits extends BranchGroup {
             transformGroups[i].addChild(limits[i]);
             this.addChild(transformGroups[i]);
         }
+        //Pablo: Agregué esto para darle apariencia a los límites al crearlo
+        //TODO: Esto es temporal, quitar cuando las apariencias, texuras y/o 
+        //materiales se hagan atributos
+        Material material = new Material();
+        material.setCapability(Material.ALLOW_COMPONENT_READ);
+        material.setCapability(Material.ALLOW_COMPONENT_WRITE);
+        this.setLimitMaterial(material);
+        //======================================================================
     }
 
     /**
