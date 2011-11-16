@@ -6,6 +6,8 @@
 package org.itver.graphics.nodes;
 
 import java.awt.Image;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.io.File;
 import javax.vecmath.Point3d;
 import org.itver.common.propertyeditors.Tuple3dEditor;
@@ -23,13 +25,14 @@ import org.openide.util.lookup.Lookups;
  *
  * @author Karo
  */
-public class SceneComponentNode extends AbstractNode{
+public class SceneComponentNode extends AbstractNode implements PropertyChangeListener{
     private MainSceneComponent msc;
     private static final String PATH = "org/itver/graphics/img/msc";
 
     public SceneComponentNode(MainSceneComponent msc){
         super(Children.LEAF, Lookups.singleton(msc));
         this.msc = msc;
+        this.msc.addPropertyChangeListener(this);
         this.setDisplayName(msc.getType().name()+": "+msc.getComponentName());
         this.setName(msc.toString());
     }
@@ -78,6 +81,14 @@ public class SceneComponentNode extends AbstractNode{
         }
         result.put(props);
         return result;
+    }
+
+    @Override
+    public void propertyChange(PropertyChangeEvent evt) {
+        String name = evt.getPropertyName();
+        if(name.equals("Name")){
+            this.setDisplayName(msc.getType().name()+": "+msc.getComponentName());
+        }   
     }
 
 }

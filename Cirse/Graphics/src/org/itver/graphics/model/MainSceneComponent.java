@@ -24,6 +24,7 @@ import javax.media.j3d.Transform3D;
 import javax.media.j3d.TransformGroup;
 import javax.vecmath.Point3d;
 import javax.vecmath.Vector3d;
+import org.itver.common.util.IdGenerator;
 import org.itver.common.util.ModifyTree;
 import org.itver.common.xml.DAELoader;
 import org.itver.graphics.controller.CollisionDetector;
@@ -84,6 +85,7 @@ public class MainSceneComponent extends BranchGroup {
         selectedAp     = new Appearance();
         selected       = false;
         name           = null;
+        id = IdGenerator.generateComponentId();
         t3d = new Transform3D();
         transformGroup = new TransformGroup();
         transformGroup.setCapability(TransformGroup.ALLOW_TRANSFORM_WRITE);
@@ -104,6 +106,7 @@ public class MainSceneComponent extends BranchGroup {
     /**
      * Construye una nueva instancia de MainSceneComponent dados un
      * indentificador único, tipo y ruta.
+     * @deprecated 
      * @param id Entero identificador para cada objeto.
      * @param type Tipo de componente.
      * @param source Ruta en la que se localiza el archivo del componente a crear.

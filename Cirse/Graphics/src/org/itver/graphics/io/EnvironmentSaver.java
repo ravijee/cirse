@@ -153,6 +153,7 @@ public class EnvironmentSaver {
             saver.addAttribute("src", XmlSaver.CDATA, components.get(i).getSource().getPath());
             saver.addAttribute("type", XmlSaver.CDATA, components.get(i).getType().name());
             saver.startTag("object");
+            saver.startTag("name", ""+components.get(i).getComponentName());
             saver.startTag("scale", String.valueOf(components.get(i).getScale()));
             saver.startTag("location", Converter.tuple3dToString(components.get(i).getPosition()));
             saver.startTag("rotation", Converter.tuple3dToString(components.get(i).getRotation()));
