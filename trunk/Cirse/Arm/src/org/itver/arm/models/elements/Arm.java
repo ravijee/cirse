@@ -4,6 +4,7 @@
  */
 package org.itver.arm.models.elements;
 
+import java.io.File;
 import java.util.ArrayList;
 import javax.vecmath.Vector3d;
 import org.itver.arm.models.nodes.elements.ArmNode;
@@ -169,6 +170,13 @@ public class Arm extends Element implements MSComponentContent{
 
         
         this.alert.firePropertyChange(NEXT, piece, null);
+    }
+    
+    @Override
+    public void setSource(File source){
+        super.setSource(source);
+        if(this.container != null)
+            this.container.setSource(source);
     }
 
     /**
