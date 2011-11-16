@@ -151,6 +151,9 @@ public class EnvironmentParser extends SceneHandler{
                     }  
                 }
                 break;
+            case name:
+                component.setComponentName(content);
+                break;
             case scale:
                 double scale = Double.parseDouble(content);
                 component.setScale(scale);

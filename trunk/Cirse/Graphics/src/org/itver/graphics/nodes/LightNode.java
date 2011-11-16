@@ -81,14 +81,16 @@ public class LightNode extends AbstractNode {
                     PropertySupport.Reflection position = new PropertySupport.Reflection(sceneLight, Point3f.class, "position");
                     position.setName("Position");
                     position.setPropertyEditorClass(Tuple3dEditor.class);
-                    Property attenuation = new PropertySupport.Reflection(sceneLight, Point3f.class, "attenuation");
+                    PropertySupport.Reflection attenuation = new PropertySupport.Reflection(sceneLight, Point3f.class, "attenuation");
                     attenuation.setName("Attenuation");
+                    attenuation.setPropertyEditorClass(Tuple3dEditor.class);
                     props.put(position);
                     props.put(attenuation);
                 } else {
                     if (sceneLight.getLightType() == LightType.directional) {
-                        Property direction = new PropertySupport.Reflection(sceneLight, Vector3f.class, "direction");
+                        PropertySupport.Reflection direction = new PropertySupport.Reflection(sceneLight, Vector3f.class, "direction");
                         direction.setName("Direction");
+                        direction.setPropertyEditorClass(Tuple3dEditor.class);
                         props.put(direction);
                     }
                 }

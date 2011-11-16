@@ -145,9 +145,9 @@ public class Universe{
         vp.setViewPlatformBehavior(orbita);
         
         Transform3D t3d = new Transform3D();
-        t3d.lookAt(new Point3d(0, 10, 10), new Point3d(), new Vector3d(0, 1, 0));
-        t3d.invert();
-        vp.getViewPlatformTransform().setTransform(t3d);
+//        t3d.lookAt(new Point3d(0, 0, 0.00000000000001), new Point3d(), new Vector3d(0, 1, 0));
+//        t3d.invert();
+//        vp.getViewPlatformTransform().setTransform(t3d);
         orbita.setEnable(true);
     }
 

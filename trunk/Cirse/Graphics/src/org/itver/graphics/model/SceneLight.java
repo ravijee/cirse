@@ -49,19 +49,19 @@ public class SceneLight extends BranchGroup{
         super();
         this.type = type;
         pcs = new PropertyChangeSupport(this);
-        color = new Color(0);
+        color = Color.WHITE;
         direction = new Vector3f();
         position = new Point3f();
-        attenuation = new Point3f();
+        attenuation = new Point3f(1, 0, 0);
         switch (type) {
             case ambient:
-                light = new AmbientLight();
+                light = new AmbientLight(new Color3f(color));
                 break;
             case directional:
-                light = new DirectionalLight();
+                light = new DirectionalLight(new Color3f(color), direction);
                 break;
             case point:
-                light = new PointLight();
+                light = new PointLight(new Color3f(color), position, attenuation);
                 break;
             default:
                 light = null;
