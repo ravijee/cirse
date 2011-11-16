@@ -44,7 +44,7 @@ public class EnvironmentSaver {
      * @throws SAXException 
      */
     public void save(Universe universe, File file) throws SAXException{
-        saver.startFile("doctypes/"+ XmlSaver.DOCTYPE_UNIVERSE, file.getAbsolutePath());
+        saver.startFile(XmlSaver.DOCTYPE_UNIVERSE, file.getAbsolutePath());
         generateUniverse(universe);
         saver.endFile();
     }

@@ -169,6 +169,7 @@ public class EnvironmentLimits extends BranchGroup {
             limits[i].setCapability(Shape3D.ALLOW_GEOMETRY_WRITE);
             limits[i].setCapability(Shape3D.ENABLE_COLLISION_REPORTING);
             limits[i].setCapability(Shape3D.ALLOW_APPEARANCE_WRITE);
+            limits[i].setCapability(Shape3D.ALLOW_APPEARANCE_READ);
             limits[i].setCollidable(true);
             limits[i].setUserData(this);
             transformGroups[i].addChild(limits[i]);
@@ -247,9 +248,16 @@ public class EnvironmentLimits extends BranchGroup {
     private void updateMaterial(Color3f ambient, Color3f emissive, Color3f diffuse, Color3f specular, float shininess){
         Appearance appearance = new Appearance();
         appearance.setCapability(Appearance.ALLOW_TEXTURE_WRITE);
+        appearance.setCapability(Appearance.ALLOW_TEXTURE_READ);
         appearance.setCapability(Appearance.ALLOW_TEXTURE_ATTRIBUTES_WRITE);
         appearance.setCapability(Appearance.ALLOW_TEXGEN_WRITE);
+        appearance.setCapability(Appearance.ALLOW_MATERIAL_READ);
+        appearance.setCapability(Appearance.ALLOW_MATERIAL_WRITE);
         Material material = new Material(ambient, emissive, diffuse, specular, shininess);
+        //Pablo: Capabilities para J3d 1.3
+        material.setCapability(Material.ALLOW_COMPONENT_READ);
+        material.setCapability(Material.ALLOW_COMPONENT_WRITE);
+        //----------------------------------
         appearance.setMaterial(material);
         setAppearance(appearance);
     }
@@ -261,8 +269,11 @@ public class EnvironmentLimits extends BranchGroup {
     public void setLimitMaterial(Material material){
         Appearance appearance = new Appearance();
         appearance.setCapability(Appearance.ALLOW_TEXTURE_WRITE);
+        appearance.setCapability(Appearance.ALLOW_TEXTURE_READ);
         appearance.setCapability(Appearance.ALLOW_TEXTURE_ATTRIBUTES_WRITE);
         appearance.setCapability(Appearance.ALLOW_TEXGEN_WRITE);
+        appearance.setCapability(Appearance.ALLOW_MATERIAL_READ);
+        appearance.setCapability(Appearance.ALLOW_MATERIAL_WRITE);
         appearance.setMaterial(material);
         setAppearance(appearance);
 //        for (int i = 0; i < limits.length; i++) {

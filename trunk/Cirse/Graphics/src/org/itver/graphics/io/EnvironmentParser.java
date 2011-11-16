@@ -195,6 +195,9 @@ public class EnvironmentParser extends SceneHandler{
                 break;
             case material:
                material = new Material();
+               //Pablo: Capabilities para J3D 1.3
+               material.setCapability(Material.ALLOW_COMPONENT_READ);
+               //-----------------------------------
                break;
 //            case appearance:
 //               mainScene.getEnvironmentLimits().setAppearance(new Appearance()); 
