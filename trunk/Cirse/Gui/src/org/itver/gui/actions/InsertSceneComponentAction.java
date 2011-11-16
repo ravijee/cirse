@@ -46,7 +46,6 @@ public final class InsertSceneComponentAction implements ActionListener {
         }
     }
     @Override
-    /*TODO: Quitar escalas (setScale)*/
     public void actionPerformed(ActionEvent e) {
         File directory = new File(properties.getProperty(PATH));
         Universe universe = Universe.getInstance();
@@ -58,13 +57,12 @@ public final class InsertSceneComponentAction implements ActionListener {
             File selectedFile = fileChooser.getSelectedFile();
             String source = selectedFile.getPath();
             if (source.endsWith(".dae")) {
-                MainSceneComponent bgc = new MainSceneComponent(IdGenerator.generateComponentId(), ComponentType.furniture, selectedFile);
+                MainSceneComponent bgc = new MainSceneComponent(ComponentType.furniture, selectedFile);
                 bgc.loadType();
-                bgc.setScale(0.03);
                 universe.addComponent(bgc);
             } else {
                 if (source.endsWith(".off")) {
-                    MainSceneComponent bgc = new MainSceneComponent(IdGenerator.generateComponentId(), ComponentType.pickable, selectedFile);
+                    MainSceneComponent bgc = new MainSceneComponent(ComponentType.pickable, selectedFile);
                     bgc.loadType();
                     universe.addComponent(bgc);
                 }
