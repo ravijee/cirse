@@ -90,14 +90,11 @@ public final class Dialogs {
         String file = dialog.getFile();
         String path = dialog.getDirectory();
         String extension = "";
-        if((!(file.contains("."))) && 
-             extAllow.length() > 0 &&
-             mode == FileDialog.SAVE){
-            extension = "." + extAllow.split("[\\s]*,[\\s]*", 1)[0];
-        }
         if(file == null)
             return null;
-        else
+        else if(!(file.contains(".")) && extAllow.length() > 0 && mode == FileDialog.SAVE)
+            extension = "." + extAllow.split("[\\s]*,[\\s]*", 1)[0];
+        
             return new File(path + file + extension);
     }
     /**
