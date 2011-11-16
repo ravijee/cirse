@@ -31,6 +31,7 @@
             <color>1, 0, 0</color>
         </light>
         <object src="designs/Flecha.dae" type='furniture'>
+            <name>Flecha</name>
             <scale>1</scale>
             <location>1, 1, 1</location>
             <rotation>12, 12, 12</rotation>

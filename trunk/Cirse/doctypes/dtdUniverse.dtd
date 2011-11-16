@@ -40,7 +40,7 @@ and open the template in the editor.
             <!ELEMENT position (#PCDATA)> <!-- x, y, z -->
             <!ELEMENT direction (#PCDATA)>
             <!ELEMENT attenuation (#PCDATA)> <!-- constant, linear, quadratic -->
-        <!ELEMENT object (scale, location, rotation)>
+        <!ELEMENT object (name?, scale, location, rotation)>
         <!ATTLIST object type (arm|pickable|furniture) "furniture"
                          src CDATA #REQUIRED>
             <!ELEMENT scale (#PCDATA)>
