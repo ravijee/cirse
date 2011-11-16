@@ -11,7 +11,11 @@
 
 package org.itver.common.propertyeditors.visual;
 
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.io.Serializable;
 
 /**
@@ -28,6 +32,43 @@ public class GenericPanel extends javax.swing.JPanel implements Serializable{
 
     public GenericPanel() {
         initComponents();
+        this.propertyText.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                final float STEP = 0.5f;
+                String text = propertyText.getText();
+                if(!(text.matches("\\-?[0-9]+(\\.[0-9]+)?")))
+                    return;
+                double value = Double.valueOf(text);
+                switch(e.getKeyCode()){
+                    case KeyEvent.VK_UP:
+                        if(e.isShiftDown())
+                            value += STEP * 2;
+                        else
+                            value += STEP;
+                        propertyText.setText("" + value);
+                        break;
+                    case KeyEvent.VK_DOWN:
+                        if(e.isShiftDown())
+                            value -= STEP * 2;
+                        else
+                            value -= STEP;
+                        propertyText.setText("" + value);
+                }
+                
+            }
+            
+        });
+        
+        this.propertyText.addFocusListener(new FocusAdapter() {
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                String text = propertyText.getText();
+                if(!(text.matches("\\-?[0-9]+(\\.[0-9]+)?")))
+                    propertyText.setText("0");
+            }            
+        });
     }
 
     /** This method is called from within the constructor to

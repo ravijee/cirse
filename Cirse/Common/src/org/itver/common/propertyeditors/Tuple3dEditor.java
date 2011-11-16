@@ -13,8 +13,9 @@ import javax.vecmath.Point3d;
 import javax.vecmath.Point3f;
 import javax.vecmath.Tuple3d;
 import javax.vecmath.Tuple3f;
+import javax.vecmath.Vector3d;
+import javax.vecmath.Vector3f;
 import org.itver.common.propertyeditors.visual.Tuple3dEditorPanel;
-import org.itver.common.util.Converter;
 import org.openide.explorer.propertysheet.ExPropertyEditor;
 import org.openide.explorer.propertysheet.PropertyEnv;
 
@@ -25,7 +26,7 @@ import org.openide.explorer.propertysheet.PropertyEnv;
  */
 public class Tuple3dEditor extends PropertyEditorSupport
                            implements ExPropertyEditor, VetoableChangeListener{
-    private Tuple3dEditorPanel panel;
+    private Tuple3dEditorPanel panel = new Tuple3dEditorPanel();
     private PropertyEnv ev;
     private Object value;
 
@@ -41,14 +42,33 @@ public class Tuple3dEditor extends PropertyEditorSupport
     @Override
     public void setAsText(String text) {
         try {
-            text = text.replaceAll("[\\(\\)\\s]+", "");
-            if(value == null)
+            text = text.replaceAll("[\\(\\)]+", "");
+            String []stringValues = text.split("[\\s]*,[\\s]*");
+            if(stringValues.length != 3)
                 return;
-            if(value instanceof Tuple3d)
-                value = new Point3d(Converter.stringToDoubleArray(text));
-            else if(value instanceof Tuple3f)
-                value = new Point3f(Converter.stringToFloatArray(text));
-            setValue(value);
+            
+            if(value instanceof Tuple3d){
+                Tuple3d tuple;
+                if(value instanceof Point3d)
+                     tuple = new Point3d();
+                else tuple = new Vector3d();
+                double doubleValues[] = new double[3];
+                for(int i = 0; i < doubleValues.length; i++)
+                    doubleValues[i] = Double.valueOf(stringValues[i]);
+                tuple.set(doubleValues);
+                this.setValue(tuple);
+            }
+            else if(value instanceof Tuple3f){
+                Tuple3f tuple;
+                if(value instanceof Point3f)
+                     tuple = new Point3f();
+                else tuple = new Vector3f();
+                float floatValues[] = new float[3];
+                for(int i = 0; i < floatValues.length; i++)
+                    floatValues[i] = Float.valueOf(stringValues[i]);
+                tuple.set(floatValues);
+                this.setValue(tuple);
+            }
         } catch (Exception exc) {
             System.err.println(exc.getMessage());
         }
@@ -57,7 +77,7 @@ public class Tuple3dEditor extends PropertyEditorSupport
     @Override
     public Component getCustomEditor() {
         String[] vals = this.getAsText().replace(" ", "").split(",");
-        panel = new Tuple3dEditorPanel();
+        panel.reset();
         if(vals != null){
             panel.setX(vals[0]);
             panel.setY(vals[1]);
@@ -80,7 +100,7 @@ public class Tuple3dEditor extends PropertyEditorSupport
 
     @Override
     public void vetoableChange(PropertyChangeEvent evt) throws PropertyVetoException {
-        this.setValue(panel.getTuple3d());
+        this.setAsText(panel.getAsText());
     }
     
 }

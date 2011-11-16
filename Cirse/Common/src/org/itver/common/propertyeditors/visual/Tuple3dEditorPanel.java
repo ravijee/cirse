@@ -12,8 +12,6 @@
 package org.itver.common.propertyeditors.visual;
 
 import java.awt.event.FocusListener;
-import javax.vecmath.Point3d;
-import javax.vecmath.Tuple3d;
 
 /**
  * El panel que sale al presionar "..." en las propiedades de un Tuple3d
@@ -27,11 +25,12 @@ public class Tuple3dEditorPanel extends javax.swing.JPanel{
         y.setPropertyName("Y: ");
         z.setPropertyName("Z: ");
     }
-
-    public Tuple3d getTuple3d(){
-        return new Point3d(Double.valueOf(x.getPropertyValue()),
-                            Double.valueOf(y.getPropertyValue()),
-                            Double.valueOf(z.getPropertyValue())) {};
+    
+    public void reset(){
+        final String DEFAULT_VALUE = "0";
+        this.x.setPropertyValue(DEFAULT_VALUE);
+        this.y.setPropertyValue(DEFAULT_VALUE);
+        this.z.setPropertyValue(DEFAULT_VALUE);
     }
 
     public void addListener(FocusListener listener){
@@ -45,7 +44,25 @@ public class Tuple3dEditorPanel extends javax.swing.JPanel{
         y.removeListener(listener);
         z.removeListener(listener);
     }
+    
+    public void setX(String val){
+        x.setPropertyValue(val);
+    }
 
+    public void setY(String val){
+        y.setPropertyValue(val);
+    }
+
+    public void setZ(String val){
+        z.setPropertyValue(val);
+    }
+
+    public String getAsText() {
+        return this.x.getPropertyValue() + ", " +
+               this.y.getPropertyValue() + ", " +
+               this.z.getPropertyValue() + ", ";
+    }
+    
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
@@ -83,30 +100,5 @@ public class Tuple3dEditorPanel extends javax.swing.JPanel{
     private org.itver.common.propertyeditors.visual.GenericPanel y;
     private org.itver.common.propertyeditors.visual.GenericPanel z;
     // End of variables declaration//GEN-END:variables
-
-    public final void setTuple3d(Tuple3d tuple) {
-        x.setPropertyValue(tuple.x + "");
-        y.setPropertyValue(tuple.y + "");
-        z.setPropertyValue(tuple.z + "");
-    }
-
-    public void setX(String val){
-        x.setPropertyValue(val);
-    }
-
-    public void setY(String val){
-        y.setPropertyValue(val);
-    }
-
-    public void setZ(String val){
-        z.setPropertyValue(val);
-    }
-
-    public String getAsText() {
-        return this.x.getPropertyValue() + ", " +
-               this.y.getPropertyValue() + ", " +
-               this.z.getPropertyValue() + ", ";
-    }
-
 
 }

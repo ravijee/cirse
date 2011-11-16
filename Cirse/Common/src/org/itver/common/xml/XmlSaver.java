@@ -37,7 +37,7 @@ public class XmlSaver{
     /**
      * Ruta default donde se encuentran los doctypes de lo archivos manejados
      */
-    public static final String PUBLIC_URL     = "http://monkeyarm.googlecode.com/files/";
+    public static final String PUBLIC_URL     = "http://cirse.googlecode.com/files/";
 
     /**
      * Ruta default del Doctype que especifica los datos del xml del brazo
