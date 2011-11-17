@@ -126,7 +126,7 @@ public class EnvironmentSaver {
             Color3f color = new Color3f(lights.get(i).getColor());
             saver.startTag("color", Converter.tuple3fToString(color));
             switch(lights.get(i).getLightType()){
-                case ambient:
+//                case ambient:
                 case point:
                     Point3f position = lights.get(i).getPosition();
                     saver.startTag("position", Converter.tuple3fToString(position));
