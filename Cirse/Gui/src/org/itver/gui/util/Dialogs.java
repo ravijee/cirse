@@ -11,6 +11,7 @@ import java.io.File;
 import java.io.FilenameFilter;
 import java.util.Properties;
 import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import org.openide.DialogDisplayer;
 import org.openide.NotifyDescriptor;
 
@@ -37,17 +38,15 @@ public final class Dialogs {
      * @param extensionAllowed No implementado aun, extension de archivos 
      * permitidos.
      * @return Archivo seleccionado. {@code null} si no selcciono nada.
-     * @deprecated Usar {@link #fileDialog(int, java.lang.String) FileDialog}
      */
-    @Deprecated
     public static File openDialog(String extensionAllowed){
         JFileChooser chooser = new JFileChooser();
-        chooser.setCurrentDirectory(dir);
+        String[] exts = extensionAllowed.split("[\\s]*,[\\s]*");
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("", exts);
+        chooser.setFileFilter(filter);
         File result = null;
-        if(chooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION){
+        if(chooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION)
             result = chooser.getSelectedFile();
-            dir = result.getParentFile();
-        }
         return result;
     }
 
@@ -82,20 +81,25 @@ public final class Dialogs {
      * @return Archivo seleccionado. {@code null} si no selecciona alguno.
      */
     public static File fileDialog(int mode, String extAllow){
-        FileDialog dialog = new FileDialog(new Frame(), TITLES[mode]);
-        dialog.setMode(mode);
-        if(extAllow != null)
-            dialog.setFilenameFilter(new FileFilter(extAllow));
-        dialog.setVisible(true);
-        String file = dialog.getFile();
-        String path = dialog.getDirectory();
-        String extension = "";
-        if(file == null)
-            return null;
-        else if(!(file.contains(".")) && extAllow.length() > 0 && mode == FileDialog.SAVE)
-            extension = "." + extAllow.split("[\\s]*,[\\s]*", 1)[0];
-        
-            return new File(path + file + extension);
+        if(!System.getProperty("os.name").equals("Mac OS X") && 
+            mode == FileDialog.LOAD)
+            return Dialogs.openDialog(extAllow);
+        else{
+            FileDialog dialog = new FileDialog(new Frame(), TITLES[mode]);
+            dialog.setMode(mode);
+            if(extAllow != null)
+                dialog.setFilenameFilter(new FileFilter(extAllow));
+            dialog.setVisible(true);
+            String file = dialog.getFile();
+            String path = dialog.getDirectory();
+            String extension = "";
+            if(file == null)
+                return null;
+            else if(!(file.contains(".")) && extAllow.length() > 0 && mode == FileDialog.SAVE)
+                extension = "." + extAllow.split("[\\s]*,[\\s]*", 1)[0];
+
+                return new File(path + file + extension);
+        }
     }
     /**
      * Muestra un mensaje en un dialogo de error.
