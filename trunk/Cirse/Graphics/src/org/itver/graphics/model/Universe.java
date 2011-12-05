@@ -18,7 +18,6 @@ import org.itver.graphics.controller.CameraKeyBehavior;
 import org.itver.graphics.guitools.Control;
 import javax.media.j3d.TransformGroup;
 import javax.vecmath.Color3f;
-import javax.vecmath.Vector3d;
 import org.itver.common.xml.SceneFromXML;
 import org.itver.graphics.controller.PickComponentBehavior;
 import org.itver.graphics.io.EnvironmentParser;
@@ -72,6 +71,9 @@ public class Universe{
         try {
             EnvironmentParser parser = new EnvironmentParser(MainScene.getInstance());
             SceneFromXML reader = new SceneFromXML(parser);
+            //Pablo - Se pone como ParentPath la ruta del padre del archivo 
+            //(Carpeta contenedora)
+            parser.setFileName(file.getParentFile().getAbsolutePath());
             reader.load(file.getAbsolutePath());
         } catch (FileNotFoundException ex) {
             Exceptions.printStackTrace(ex);

@@ -25,6 +25,10 @@ import org.xml.sax.SAXException;
 public class EnvironmentSaver {
     private XmlSaver saver;
     private float version;
+    
+    //Pablo - Objeto para saber donde se esta guardando el archivo
+    private File file;
+    
 
     /**
      * Crea un {@code EnvironmentSaver} recibiendo la versión de documento
@@ -44,6 +48,7 @@ public class EnvironmentSaver {
      * @throws SAXException 
      */
     public void save(Universe universe, File file) throws SAXException{
+        this.file = file;
         saver.startFile(XmlSaver.DOCTYPE_UNIVERSE, file.getAbsolutePath());
         generateUniverse(universe);
         saver.endFile();
@@ -74,7 +79,7 @@ public class EnvironmentSaver {
     private void generateBackground(Universe universe) throws SAXException {
         File bgFile = universe.getScene().getBackgroundFile();
         if(bgFile != null){
-            saver.addAttribute("src", XmlSaver.CDATA, bgFile.getPath());
+            saver.addAttribute("src", XmlSaver.CDATA, relativePath(bgFile.getAbsolutePath()));
         }    
 //        }else{
 //            Color3f bgColor = new Color3f(universe.getScene().getBackgroundColor());
@@ -104,7 +109,7 @@ public class EnvironmentSaver {
         saver.startTag("shininess", String.valueOf(universe.getScene().getEnvironmentLimits().getMaterialShininess()));
         saver.closeTag("material");
         if(universe.getScene().getEnvironmentLimits().getTexture()!= null){
-            saver.addAttribute("src", XmlSaver.CDATA, universe.getEnvirionmentLimits().getTexture().getPath());
+            saver.addAttribute("src", XmlSaver.CDATA, relativePath(universe.getEnvirionmentLimits().getTexture().getAbsolutePath()));
             saver.addAttribute("enabled", XmlSaver.CDATA, String.valueOf(universe.getEnvirionmentLimits().hasTexture()));
             saver.startTag("texture");
             saver.closeTag("texture");
@@ -150,7 +155,7 @@ public class EnvironmentSaver {
     private void generateComponents(Universe universe) throws SAXException {
         ArrayList<MainSceneComponent> components = universe.getScene().getComponentArray();
         for (int i = 0; i < components.size(); i++) {
-            saver.addAttribute("src", XmlSaver.CDATA, components.get(i).getSource().getPath());
+            saver.addAttribute("src", XmlSaver.CDATA, relativePath(components.get(i).getSource().getAbsolutePath()));
             saver.addAttribute("type", XmlSaver.CDATA, components.get(i).getType().name());
             saver.startTag("object");
             saver.startTag("name", ""+components.get(i).getComponentName());
@@ -159,5 +164,22 @@ public class EnvironmentSaver {
             saver.startTag("rotation", Converter.tuple3dToString(components.get(i).getRotation()));
             saver.closeTag("object");
         }
+    }
+    
+    //Pablo- Metodo para guardar las rutas relativas ala ruta de la ruta del XML
+    //TODO: Probar este metodo en windows
+    /**
+     * Regresa la ruta relativa de la ruta de archivo dada, tomando como ruta de
+     * partida la del archivo a guardar
+     * @param fileName Ruta del archivo que se quiere conocer su ruta relativa,
+     * Preferentemente utilizar {@link File#getAbsolutePath getAbsolutePath}
+     * @return Ruta relativa del archivo dado con resoecto al archivo a guardar
+     */
+    private String relativePath(String fileName){
+        if(fileName == null || fileName.equals(""))
+            return fileName;
+        String envPath = file.getParentFile().getAbsolutePath() + System.getProperty("file.separator");
+        return fileName.replace(envPath, "");
+        
     }
 }
