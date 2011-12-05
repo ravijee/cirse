@@ -6,7 +6,6 @@ package org.itver.graphics.io;
 
 import java.awt.Color;
 import java.io.File;
-import javax.media.j3d.Appearance;
 import javax.media.j3d.Material;
 import javax.vecmath.Point3f;
 import javax.vecmath.Vector3f;
@@ -212,7 +211,7 @@ public class EnvironmentParser extends SceneHandler{
     private void initBackground(Attributes attr){
         if(attr.getLength() != 0){
 //        if(textureFile != null)
-            File textureFile = new File(attr.getValue("src"));
+            File textureFile = this.relativeFile(attr.getValue("src"));
             mainScene.setBackgroundFile(textureFile);
         }    
     }
@@ -222,7 +221,7 @@ public class EnvironmentParser extends SceneHandler{
      * @param attr Atributo de la textura.
      */
     private void initLimitTexture(Attributes attr){
-        File limitTexture = new File(attr.getValue("src"));
+        File limitTexture = this.relativeFile(attr.getValue("src"));
         if(attr.getValue("enabled").equals(String.valueOf(Boolean.TRUE))){
             mainScene.getEnvironmentLimits().setTexture(limitTexture);
             mainScene.getEnvironmentLimits().setTextureFlag(true);
@@ -247,10 +246,35 @@ public class EnvironmentParser extends SceneHandler{
      */
     private void initMainSceneComponent(Attributes attr){
         ComponentType type = ComponentType.valueOf(attr.getValue("type"));
-        File source = new File(attr.getValue("src"));
+        File source = this.relativeFile(attr.getValue("src"));
         component = new MainSceneComponent(type, source);
         component.loadType();
         mainScene.addComponent(component);
+    }
+    
+    //Pablo
+    //Metodo para crear el archivo relativo
+    //TODO: Probar este metodo en Windows
+    /**
+     * Crea un objeto File con el nombre de archivo dado, creandolo a partir de
+     * la carpeta contenedora del archivo leido.
+     * @param fileName Nombre del archivo a leer
+     * @return Objeto File aparitr del archivo a leer
+     */
+    private File relativeFile(String fileName){
+        //Validación del parametro
+        if(fileName == null)
+            return null;
+        
+        //Se crea un objeto File con la ruta inicial, que se obtiene directo del
+        //Atributo "src" del archivo
+        File result = new File(fileName);
+        
+        //Si el objeto no contiene una ruta absoluta, se debe referenciar a 
+        //partir de la dirección del XML que se esta leyendo
+        if(!result.isAbsolute())
+            result = new File(this.parentPath, fileName);
+        return result;
     }
     
 }
