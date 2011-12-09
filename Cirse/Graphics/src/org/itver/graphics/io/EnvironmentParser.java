@@ -50,7 +50,9 @@ public class EnvironmentParser extends SceneHandler{
      */
     @Override
     public void characters(char[] ch, int start, int length) throws SAXException {
+        
         String content = String.valueOf(ch, start, length);
+        if(content.equals("\n")) return;
         SceneLight light;
         switch (element){
             case background:
