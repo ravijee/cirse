@@ -63,8 +63,8 @@ public class ArmHandler extends SceneHandler{
 
     @Override
     public void characters(char[] ch, int start, int length) throws SAXException {
-        String chars = String.valueOf(ch, start, length);
-        if("\n".equals(chars))
+        String chars = String.valueOf(ch, start, length).replaceAll("[\\s]*", "");
+        if("\n".equals(chars) || "".equals(chars))
             return;
         double[] vals = new double[3];
         if(tag != Tags.jorientation)
