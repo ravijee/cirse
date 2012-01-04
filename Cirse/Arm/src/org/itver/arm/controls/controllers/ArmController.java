@@ -131,22 +131,31 @@ public final class ArmController implements PropertyChangeListener{
      * @param file Archivo XML válido con información sobre el brazo.
      */
     public void importArm(File file){
+        Arm arm = this.readFile(file);
+        if(arm != null)
+            this.armToScene(arm);
+    }
+    
+    public Arm readFile(File file){
+        Arm result = null;
         SceneHandler handler = new ArmHandler();
         handler.setFileName(file.getParentFile().getAbsolutePath());
         SceneFromXML loader = new SceneFromXML(handler);
        try {
             Scene scene = loader.load(new FileReader(file));
-            Arm arm = (Arm)scene.getSceneGroup();
-            this.printSceneGraph(arm, 0);
-            this.armToScene(arm);
-            arm.setSource(file);
+            result = (Arm)scene.getSceneGroup();
+            result.setSource(file);
         } catch (FileNotFoundException ex) {
             Dialogs.showErrorDialog("File not found: " + file.getPath());
+            result = null;
         } catch(NullPointerException np){
             Dialogs.showErrorDialog("File not compatible: " + file.getPath());
+            result = null;
         } catch(Exception ife){
             Exceptions.printStackTrace(ife);
+            result = null;
         }
+        return result;
     }
 
     /**
