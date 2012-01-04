@@ -9,6 +9,7 @@ import javax.swing.AbstractAction;
 import org.itver.arm.controls.controllers.ArmController;
 import org.itver.arm.controls.controllers.RotatorViewController;
 import org.itver.arm.models.elements.Arm;
+import org.itver.arm.models.log.Log;
 import org.itver.arm.threads.ChartDataThread;
 import org.itver.arm.threads.LogThread;
 import org.itver.arm.views.gui.ChartCanvas;
@@ -26,6 +27,7 @@ public final class WalkLogAction extends AbstractAction {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        if(Log.singleton().getOrders().length <= 0) return;
         LogThread thread = new LogThread();
         RotatorViewController.singleton().setModel(null);
         thread.start();
