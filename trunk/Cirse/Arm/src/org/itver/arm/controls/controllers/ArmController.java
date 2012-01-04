@@ -104,7 +104,7 @@ public final class ArmController implements PropertyChangeListener{
      * @param arm Brazo a añadir al Entorno.
      */
     public void armToScene(Arm arm){
-        MainSceneComponent component = new MainSceneComponent(Element.DEFAULT_ID, ComponentType.arm, null);
+        MainSceneComponent component = new MainSceneComponent(ComponentType.arm, arm.getSource());
         arm.setContainer(component);
         component.setContent(arm);
         MainScene.getInstance().addComponent(component);
