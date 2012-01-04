@@ -24,7 +24,6 @@ import javax.vecmath.Vector3f;
 import org.itver.arm.io.ArmSaver;
 import org.itver.arm.io.ArmHandler;
 import org.itver.arm.models.elements.Arm;
-import org.itver.arm.models.elements.Element;
 import org.itver.arm.models.elements.ElementType;
 import org.itver.arm.models.elements.Joint;
 import org.itver.arm.models.elements.Piece;
@@ -133,6 +132,7 @@ public final class ArmController implements PropertyChangeListener{
     public void importArm(File file){
         Arm arm = this.readFile(file);
         if(arm != null)
+            //TODO: agregar en el array el brazo creado desde un archivo de Env
             this.armToScene(arm);
     }
     
