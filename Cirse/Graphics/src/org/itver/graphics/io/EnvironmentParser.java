@@ -17,6 +17,7 @@ import org.itver.graphics.model.SceneLight;
 import org.itver.graphics.util.ComponentType;
 import org.itver.graphics.util.Element;
 import org.itver.graphics.util.LightType;
+import org.openide.util.Lookup;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 
@@ -249,8 +250,15 @@ public class EnvironmentParser extends SceneHandler{
         ComponentType type = ComponentType.valueOf(attr.getValue("type"));
         File source = this.relativeFile(attr.getValue("src"));
         component = new MainSceneComponent(type, source);
-        component.loadType();
-        mainScene.addComponent(component);
+        if(type == ComponentType.furniture || type == ComponentType.pickable){
+            component.loadType();
+            mainScene.addComponent(component);    
+        }else{
+            for (LoadingService svc : Lookup.getDefault().lookupAll(LoadingService.class)) {
+                component = svc.getArm(source);
+                mainScene.addComponent(component);
+            }
+        }    
     }
     
     //Pablo
