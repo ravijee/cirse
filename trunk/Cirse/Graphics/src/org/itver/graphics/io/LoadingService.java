@@ -5,7 +5,7 @@
 package org.itver.graphics.io;
 
 import java.io.File;
-import javax.media.j3d.BranchGroup;
+import org.itver.graphics.model.MainSceneComponent;
 import org.itver.graphics.util.ComponentType;
 
 /**
@@ -16,6 +16,6 @@ public interface LoadingService {
     
     public boolean isLoadable(ComponentType type);
     
-    public BranchGroup getArm(File src);
+    public MainSceneComponent getArm(File src);
     
 }
