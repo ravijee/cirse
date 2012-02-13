@@ -47,7 +47,6 @@
                 <package>org.itver.graphics.model</package>
                 <package>org.itver.graphics.nodes</package>
                 <package>org.itver.graphics.util</package>
-                <package>org.itver.graphics.view</package>
             </public-packages>
             <class-path-extension>
                 <runtime-relative-path>ext/Proyecto3D.jar</runtime-relative-path>
