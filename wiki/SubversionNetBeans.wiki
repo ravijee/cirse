@@ -1,4 +1,6 @@
+#summary Pasos para descargar CIRSE desde NetBeans mediante Subversion.
 #labels Featured,Phase-Implementation,Phase-Deploy
+
 =Descargar CIRSE mediante Subversion desde NetBeans=
 
 Para descargar CIRSE desde NetBeans, es necesario instalar primero [http://es.wikipedia.org/wiki/Subversion Subversion], esto lo hace automáticamente el IDE la primera vez que se desee utilizar. Para su instalación manual se pueden seguir los pasos marcados por su [http://subversion.apache.org/packages.html página oficial].
