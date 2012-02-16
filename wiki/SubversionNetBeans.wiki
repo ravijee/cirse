@@ -1,0 +1,28 @@
+#labels Featured,Phase-Implementation,Phase-Deploy
+=Descargar CIRSE mediante Subversion desde NetBeans=
+
+Para descargar CIRSE desde NetBeans, es necesario instalar primero [http://es.wikipedia.org/wiki/Subversion Subversion], esto lo hace automáticamente el IDE la primera vez que se desee utilizar. Para su instalación manual se pueden seguir los pasos marcados por su [http://subversion.apache.org/packages.html página oficial].
+
+La opción para obtener el proyecto desde el repositorio se encuentra en el menú _Team_ (Equipo), estando ahí se selecciona la opción *_Checkout…_* del submenú _Subversion_ (En este punto NetBeans ofrecerá descargar e instalar Subversion automáticamente en caso de no estar en el sistema).
+
+[http://cirse.googlecode.com/files/checkout1.png]
+
+En los cuadros de texto a llenar dentro del diálogo siguiente contienen la información referente a la ubicación del repositorio y el usuario que lo descarga. La ubicación de CIRSE se encuentra en la pestaña [http://code.google.com/p/cirse/source/checkout Source] de ésta página, donde también se les da información de su cuenta y contraseña.
+
+[http://cirse.googlecode.com/files/checkout2.png]
+
+*Nota: para poder descargar con cuenta debes estar dado de alta previamente en el proyecto.* 
+
+Si no tienes cuenta o ésta aún no ha sido dado de alta, puede omitir introducir su nombre de usuario y contraseña, lo que hará que se descargue de forma anónima, pero sin permitir agregar los cambios hechos al repositorio.
+
+Si los datos dados son correctos, al pasar al diálogo siguiente se ofrecerán las opciones para descargar el proyecto.
+ 
+  *_Repository Folder(s)._ Indica desde que carpeta del repositorio se descargará el proyecto (siendo *trunk* la carpeta recomendada).
+
+  *_Repository Revision._ Indica la revisión (actualización) desde la que se desee descargar el proyecto. _Head_ indica que se descargará la última actualización disponible.
+
+  *_Export a clean directory from the repository._ Indica que una vez descargado, el proyecto no estará ligado con el repositorio, por lo que todo el proyecto será considerado como nuevo proyecto. (Recomendado: desactivado).
+
+  *_Local Folder._ Carpeta local donde se descargará el proyecto.
+
+Una vez terminados estos pasos, el proyecto debería estar descargado y listo para compilar.
