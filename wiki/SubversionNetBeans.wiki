@@ -29,3 +29,13 @@ Si los datos dados son correctos, al pasar al diálogo siguiente se ofrecerán l
   *_Local Folder._ Carpeta local donde se descargará el proyecto.
 
 Una vez terminados estos pasos, el proyecto debería estar descargado y listo para compilar.
+
+Ya con el proyecto listo para usar, dentro del submenú subversion se activan distintas opciones para mantener actualizados el proyecto local y el repositorio. Estas opciones se activan siempre que se seleccione un proyecto (o archivo dentro de éste) ligado a un repositorio. Las opciones más utilizadas son Update, Commit y revert modifications.
+
+  **Update*. Actualiza los archivos nuevos del repositorio con los del proyecto local, si ambos se encuentran en la misma revisión no sucede nada.
+
+  **Commit* Agrega los archivos nuevos del proyecto local al repositorio y aumenta a éste su número de revisión en 1. Debido a la arquitectura modular de la plataforma de NetBeans se debe realizar un commit por cada módulo modificado, ya que al realizar un commit desde la carpeta raíz (CIRSE) solo se agregarán los archivos de ésta carpeta sin entrar en los módulos. *Solo las cuentas registradas en el proyecto pueden realizar Commit*
+
+  **Revert modifications* Permite deshacer cambios en el proyecto local, descargando de nuevo los archivos modificados desde el repositorio.
+
+Subversion cuenta con muchas opciones más que no se cubren en esta página, [http://netbeans.org/kb/docs/ide/subversion.html la Wiki de NetBeans] contiene una página que cubre a fondo cada opción y se encuentra un [http://svnbook.red-bean.com/ libro] con toda la información referente a Subversion.
