@@ -40,3 +40,5 @@ Ya con el proyecto listo para usar, dentro del submenú subversion se activan di
   * *Revert modifications* Permite deshacer cambios en el proyecto local, descargando de nuevo los archivos modificados desde el repositorio.
 
 Subversion cuenta con muchas opciones más que no se cubren en esta página, [http://netbeans.org/kb/docs/ide/subversion.html la Wiki de NetBeans] contiene una página que cubre a fondo cada opción y se encuentra un [http://svnbook.red-bean.com/ libro] con toda la información referente a Subversion.
+
+Para información sobre el manejo de la página de este proyecto, se puede consultar la información en la [http://code.google.com/p/support/wiki/FAQ Wiki de google code].
